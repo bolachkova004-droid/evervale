@@ -111,7 +111,7 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1{color:var(--tw-ink
 .speech-translation,.choice .ru{color:#a9f5ea!important}
 
 /* ---------- Glass panels ---------- */
-.panel:not(.caretaker-portrait):not(.evidence-board):not(.scene):not(.study-scene):not(.character),
+.panel:not(.caretaker-portrait):not(.evidence-board):not(.scene):not(.study-scene):not(.character):not(.long-case-visual),
 .sidebar,.dialogue,.analysis-panel,.study-side,.caretaker-copy,.longcase-panel,.launch-panel,.roster-card,.codex-card,.ending,.memory,.start-card,.intro-shell .ending,.intro-art-panel,
 .level-card,.protagonist-card,.appearance-copy,.campaign-copy,.journal-wrap,.language-scale-panel{
   background:var(--tw-glass)!important;
@@ -335,3 +335,73 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitl
 @media(prefers-reduced-motion:reduce){
   .screen.active,#intro.active .chronicle-book,.screen.active .chapter,.screen.active .character-select-wrap,.screen.active .level-wrap,.screen.active .journal-wrap,.ev-flash{animation:none!important}
 }
+
+/* ---------- Listen buttons and the English report ---------- */
+.ev-listen{
+  display:inline-flex;width:max-content;max-width:100%;justify-self:start;align-self:flex-start;align-items:center;gap:6px;margin:4px 0 8px;padding:5px 12px;border-radius:999px;cursor:pointer;
+  font:500 12px/1 var(--chronicle-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--tw-teal);
+  background:rgba(94,230,211,.10);border:1px solid rgba(94,230,211,.42);transition:background .2s ease,transform .2s ease;
+}
+.ev-listen:hover{background:rgba(94,230,211,.2);transform:translateY(-1px)}
+.scene-copy .ev-listen,.study-copy .ev-listen{margin-top:0}
+.ev-report{display:grid;gap:10px;margin-top:18px;padding:16px 18px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid var(--tw-line);text-align:left;white-space:normal}
+.ev-report b{font:600 20px/1.2 var(--tw-display);color:var(--tw-gold)}
+.ev-report-row{display:grid;grid-template-columns:minmax(0,1fr) 120px 48px;align-items:center;gap:12px;font-size:14px;color:var(--tw-text)}
+.ev-report-row i{height:8px;border-radius:99px;background:linear-gradient(90deg,var(--tw-teal) var(--p),rgba(255,255,255,.12) var(--p))}
+.ev-report-row em{font-style:normal;text-align:right;color:var(--tw-ink)}
+.ev-report small{color:var(--tw-muted);font-size:13px}
+@media(max-width:560px){.ev-report-row{grid-template-columns:1fr 60px 40px;font-size:13px}}
+
+/* ---------- Top bar: full-bleed and solid, so nothing shows above or through it ---------- */
+.screen{--tw-pad:18px}
+@media(max-width:900px){.screen{--tw-pad:12px}}
+.screen>.topbar:first-child{
+  position:sticky!important;top:calc(var(--tw-pad) * -1)!important;
+  margin:calc(var(--tw-pad) * -1) calc(var(--tw-pad) * -1) 16px!important;
+  border-radius:0 0 16px 16px!important;border-top:0!important;
+  background:linear-gradient(90deg,#2a1a5c,#171a45 50%,#132a4c)!important;
+}
+
+/* ---------- Irene's hints sit over the art (left), not over the buttons ---------- */
+@media(min-width:761px){.irene{left:18px!important;right:auto!important}}
+
+/* ---------- Scene art for the forensic sections and the memory dive ----------
+   Interim art from the existing set; replace with assets/scenes/*.webp later. */
+.long-case-visual{border:1px solid var(--tw-line)!important;border-radius:var(--tw-radius)!important;box-shadow:var(--tw-shadow)!important;background-color:#140f2e!important;background-size:cover!important;background-position:center 30%!important;background-repeat:no-repeat!important}
+.long-case-visual[data-seg="0"]{background-image:url('assets/evervale-2edc1df84e2c46fc.webp')!important}
+.long-case-visual[data-seg="1"]{background-image:url('assets/evervale-98e63f334bb7f69b.webp')!important}
+.long-case-visual[data-seg="2"]{background-image:url('assets/evervale-89b03f3d91da00b9.webp')!important}
+.long-case-visual[data-seg="3"]{background-image:url('assets/evervale-fd727415597c12e8.webp')!important}
+.long-case-visual[data-seg="4"]{background-image:url('assets/heroes/irene.webp')!important;background-position:center 18%!important}
+.long-case-visual[data-seg="5"]{background-image:url('assets/evervale-dec33b1d80043d07.webp')!important;background-position:center 15%!important}
+.long-case-visual[data-seg="6"]{background-image:url('assets/evervale-2edc1df84e2c46fc.webp')!important}
+.long-case-visual[data-seg="7"]{background-image:url('assets/evervale-89b03f3d91da00b9.webp')!important}
+.long-case-visual:before{z-index:1;background:linear-gradient(0deg,rgba(12,8,30,.94),rgba(12,8,30,.35) 45%,transparent 70%)!important}
+.long-case-visual:after{z-index:1;opacity:.55}
+.long-case-symbol,.long-case-chapter{position:relative;z-index:2}
+.long-case-symbol{text-shadow:0 0 24px rgba(255,210,125,.8),0 0 60px rgba(169,139,255,.6)}
+
+.memory-ring{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle,rgba(20,12,48,.15) 0,rgba(20,12,48,.55) 55%,rgba(20,12,48,.95) 70%),
+    url('assets/evervale-98e63f334bb7f69b.webp') center/cover!important;
+  box-shadow:0 0 0 1px rgba(255,210,125,.5),0 0 60px rgba(169,139,255,.45),inset 0 0 80px rgba(94,230,211,.25)!important;
+  animation:twLens 9s ease-in-out infinite alternate;
+}
+.memory-ring:before{
+  content:"";position:absolute;inset:-2px;border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 0deg,transparent 0 70%,rgba(255,210,125,.55) 80%,transparent 90%);
+  -webkit-mask:radial-gradient(circle,transparent 66%,#000 67%);mask:radial-gradient(circle,transparent 66%,#000 67%);
+  animation:twSpin 12s linear infinite;
+}
+.memory-ring .rune{position:relative;z-index:1;color:var(--tw-gold)!important;text-shadow:0 0 18px rgba(255,210,125,.9)}
+@keyframes twLens{from{filter:saturate(1.1) brightness(.95)}to{filter:saturate(1.35) brightness(1.15) hue-rotate(-12deg)}}
+@keyframes twSpin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.memory-ring,.memory-ring:before{animation:none!important}}
+.long-case-visual .long-case-chapter{position:absolute!important;left:22px!important;right:22px!important;bottom:22px!important;top:auto!important;transform:none!important;text-align:left!important}
+.long-case-visual .long-case-chapter p{color:var(--tw-text)!important;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.long-case-visual .long-case-chapter b{text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.long-case-visual .long-case-symbol{position:absolute!important;left:22px!important;top:18px!important;transform:none!important;font-size:44px!important;line-height:1!important}
+/* On phones Irene's hint drops in under the top bar, away from the answer buttons. */
+@media(max-width:760px){.irene{top:64px!important;bottom:auto!important;left:10px!important;right:10px!important;width:auto!important;max-height:40vh;overflow:auto}}
