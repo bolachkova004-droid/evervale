@@ -254,3 +254,20 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1{color:var(--tw-ink
   .ev-sky i{display:none}
   .ev-tilt{transform:none!important}
 }
+
+/* ---------- New hero portraits (assets/heroes) ---------- */
+.protagonist-card.female .protagonist-art,.intro-portrait.female,.protagonist-mini.female,.codex-art.img-elara,.appearance-art.img-elara,.img-elara{
+  background-image:url('assets/heroes/elara.webp')!important;background-size:cover!important;background-position:center 18%!important;
+}
+.protagonist-card.male .protagonist-art,.intro-portrait.male,.protagonist-mini.male,.codex-art.img-arden,.appearance-art.img-arden,.img-arden{
+  background-image:url('assets/heroes/arden.webp')!important;background-size:cover!important;background-position:center 16%!important;
+}
+.codex-art.img-irene,.appearance-art.img-irene,.img-irene,.irene-photo,.roster-card[data-portrait="irene"]::before{
+  background-image:url('assets/heroes/irene.webp')!important;background-size:cover!important;background-position:center 18%!important;
+}
+.codex-art.img-silas,.appearance-art.img-silas,.img-silas,.character-img,.roster-card[data-portrait="silas"]::before{
+  background-image:url('assets/heroes/silas.webp')!important;background-size:cover!important;background-position:center 14%!important;
+}
+.protagonist-mini,.chronicle-avatar{background-position:center 16%!important}
+.protagonist-mini.female,.chronicle-avatar.female{background-position:46% 17%!important;background-size:260%!important}
+.protagonist-mini.male,.chronicle-avatar.male{background-position:55% 16%!important;background-size:260%!important}
