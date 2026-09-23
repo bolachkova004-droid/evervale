@@ -87,14 +87,14 @@
       vec3 amb=texture2D(uSmall,clamp(fit(p,0.,1.25),0.,1.)).rgb*.72+uAura*.08;
       vec3 col=mix(amb,texture2D(uTex,clamp(t,0.,1.)).rgb,inside);
       // Twilight grade: open the shadows, richer colour, tinted by the hero.
-      col=pow(max(col,0.),vec3(.84))*1.07;
+      col=pow(max(col,0.),vec3(.93));
       float l=dot(col,vec3(.299,.587,.114));
-      col=mix(vec3(l),col,1.2);
-      col+=(1.-smoothstep(0.,.42,l))*uAura*.09;
+      col=mix(vec3(l),col,1.15);
+      col+=(1.-smoothstep(0.,.42,l))*uAura*.05;
       // A lantern of light that follows the viewer's hand.
       vec2 lp=vec2(.5,.32)+uTilt*vec2(.42,.3);
       float glow=exp(-dot(p-lp,p-lp)*6.);
-      col+=uAura*glow*(.08+.16*uHover)*(.45+small.a);
+      col+=uAura*glow*(.05+.14*uHover)*(.45+small.a);
       // Slow sheen sweeping across the figure.
       float sweep=fract(uTime*.06+uSeed*.37)*2.8-.6;
       float band=exp(-pow(p.x*.75+p.y*.55-sweep,2.)*120.);
@@ -114,7 +114,7 @@
       }
       col+=mix(uAura,vec3(1.,.92,.7),.45)*motes*.45;
       float v=smoothstep(1.05,.35,length((p-.5)*vec2(1.,1.1)));
-      col*=mix(.8,1.,v);
+      col*=mix(.7,1.,v);
       gl_FragColor=vec4(col,1.);
     }`;
 
