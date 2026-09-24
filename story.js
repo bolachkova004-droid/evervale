@@ -1,5 +1,4 @@
 /* Story and learning layer over the engine in game.js:
-   - text that follows the chosen hero (Elara / Arden);
    - answer options in random order, so the right one is never "always first";
    - the correct conclusion shown after a mistake in the forensic chapter;
    - "listen" buttons that read English lines aloud;
@@ -8,24 +7,6 @@
 (() => {
   const RESULTS_KEY = 'evervale-results-v1';
   const ru = () => !isEnglishLevel(state.level);
-  const male = () => state.protagonist === 'male';
-
-  /* ---------- Hero-dependent text ---------- */
-  const gendered = [
-    [() => dialogue[2], 'speech', 'The woman called you Elara.', 'The woman called you Arden.'],
-    [() => dialogue[2], 'ru', 'Женщина называла вас Эларой.', 'Женщина называла вас Арденом.'],
-    [() => dialogue[0].choices[0], 'ru', 'чтобы я доказала?', 'чтобы я доказал?'],
-    [() => clues[1], 'ru', '«Ты знала меня раньше»', '«Ты знал меня раньше»'],
-    [() => analysisQuestions[1].options[2], 1, 'придёте первой', 'придёте первым']
-  ];
-  function applyGender() {
-    gendered.forEach(([get, key, f, m]) => {
-      const obj = get(); if (!obj || typeof obj[key] !== 'string') return;
-      obj[key] = male() ? obj[key].replace(f, m) : obj[key].replace(m, f);
-    });
-  }
-  const engineToast = window.toast;
-  window.toast = text => engineToast(male() ? String(text).replace('“Elara”', '“Arden”').replace('«Элара»', '«Арден»') : text);
 
   /* ---------- Results of the current run ---------- */
   function freshResults() {
@@ -94,7 +75,6 @@
   }
 
   function hookEngine() {
-  ['renderEvidence', 'renderQuestion', 'renderAnalysisBoard'].forEach(name => wrap(name, null, applyGender));
   wrap('renderAnalysisBoard', () => shuffle(document.getElementById('analysisOptions')));
   wrap('renderMemoryTrace', () => shuffle(document.getElementById('memoryTraceOptions')));
   wrap('renderLongCase', () => {
@@ -112,12 +92,12 @@
     const fresh = !state.found.length && !state.question && !state.longCaseStep && !state.campaignNode;
     if (!fresh) return;
     results = freshResults(); keep(); document.dispatchEvent(new CustomEvent('evervale:milestone', { detail: { runId: results.runId, chapter: 'start', level: state.level } })); });
-  wrap('selectCharacter', () => { applyGender(); if (!results.sent.hero) { results.sent.hero = true; keep(); document.dispatchEvent(new CustomEvent('evervale:milestone', { detail: { runId: results.runId, chapter: 'hero', level: state.level, hero: state.protagonist } })); } });
+  wrap('selectCharacter', () => { if (!results.sent.hero) { results.sent.hero = true; keep(); document.dispatchEvent(new CustomEvent('evervale:milestone', { detail: { runId: results.runId, chapter: 'hero', level: state.level, hero: state.protagonist } })); } });
 
-  wrap('findEvidence', () => { if (state.found.length === 4) milestone('1 crime scene', 4, 4); });
-  wrap('answerAnalysis', () => { if (state.analysisStep >= analysisQuestions.length) milestone('2 evidence board', state.analysisScore, analysisQuestions.length); });
-  wrap('findHiddenEvidence', () => { if (state.hiddenFound.length === 4) milestone('3 hidden room', 4, 4); });
-  wrap('answerCaretaker', () => { if (state.caretakerStep >= caretakerDialogue.length) milestone('4 witness Mara', null, null, { trust: state.caretakerTrust }); });
+  wrap('findEvidence', () => { if (state.found.length === 4) milestone('1 apartment 17', 4, 4); });
+  wrap('answerAnalysis', () => { if (state.analysisStep >= analysisQuestions.length) milestone('2 neighbours', state.analysisScore, analysisQuestions.length); });
+  wrap('findHiddenEvidence', () => { if (state.hiddenFound.length === 4) milestone('3 caretaker office', 4, 4); });
+  wrap('answerCaretaker', () => { if (state.caretakerStep >= caretakerDialogue.length) milestone('4 Mara Holt', null, null, { trust: state.caretakerTrust }); });
 
   wrap('answerLongCase', (ctx) => {
     if (ctx.node && !ctx.correct) {
@@ -125,26 +105,26 @@
       const right = ctx.node.opts[ctx.node.correct];
       showIrene((ru() ? 'Верный вывод: ' : 'The supported conclusion: ') + right.en + (ru() ? ' (' + right.ru + ')' : ''));
     } else closeIrene();
-    if (state.longCaseStep >= longCaseNodes.length) milestone('5 forensic investigation', state.longCaseScore, longCaseNodes.length, { mistakes: state.longCaseMistakes });
+    if (state.longCaseStep >= longCaseNodes.length) milestone('5 archive investigation', state.longCaseScore, longCaseNodes.length, { mistakes: state.longCaseMistakes });
   }, index => {
     const node = longCaseNodes[state.longCaseStep];
     return node ? { node, index: state.longCaseStep, correct: index === node.correct } : { correct: true };
   });
 
   wrap('chooseWord', () => {
-    if (state.memoryStage === 1) milestone('6 memory sentence', Math.max(0, 3 - results.wordMistakes), 3, { mistakes: results.wordMistakes });
+    if (state.memoryStage === 1) milestone('6 her last sentence', Math.max(0, 3 - results.wordMistakes), 3, { mistakes: results.wordMistakes });
   }, (w) => {
-    const target = 'The city did not survive — it was rewritten';
+    const target = window.CASE_SENTENCE || '';
     const next = state.words.concat(w).join(' ');
     if (!target.startsWith(next)) { results.wordMistakes++; keep(); }
   });
   wrap('answerMemoryTrace', () => {
-    if (state.memoryTraceStep >= memoryTraceQuestions.length) milestone('7 memory trace', results.traceCorrect, memoryTraceQuestions.length);
+    if (state.memoryTraceStep >= memoryTraceQuestions.length) milestone('7 her memory', results.traceCorrect, memoryTraceQuestions.length);
   }, correct => { if (correct) { results.traceCorrect++; keep(); } });
-  wrap('answer', () => { if (state.question >= dialogue.length) milestone('8 interrogation Silas', null, null, { trust: state.trust, influence: state.influence }); });
-  wrap('finish', (ctx, type) => milestone('9 verdict', null, null, { route: type }));
-  wrap('completeCampaign', (ctx, key) => {
-    milestone('10 ending', null, null, { ending: key, route: state.route, scenes: state.campaignHistory.length, secrets: state.secrets.length, ...englishSummary() });
+  wrap('answer', () => { if (state.question >= dialogue.length) milestone('8 Silas', null, null, { trust: state.trust, influence: state.influence }); });
+  wrap('finish', (ctx, type) => {
+    milestone('9 verdict', null, null, { route: type });
+    milestone('10 ending', null, null, { ending: 'case 001 closed', route: type, ...englishSummary() });
     renderReport();
   });
   }
@@ -157,11 +137,11 @@
   }
   function renderReport() {
     const box = document.getElementById('endingResult'); if (!box) return;
-    const s = englishSummary(), r = ru();
+    const s = englishSummary(), r = ru() && state.level !== 'A2';
     const rows = [
-      [r ? 'Доска улик (грамматика и логика)' : 'Evidence board (grammar and logic)', state.analysisScore, analysisQuestions.length],
-      [r ? 'Судебная экспертиза (чтение)' : 'Forensic investigation (reading)', state.longCaseScore, longCaseNodes.length],
-      [r ? 'След памяти (условия, отрицание)' : 'Memory trace (conditionals, negation)', results.traceCorrect, memoryTraceQuestions.length]
+      [r ? 'Показания соседей (грамматика как улика)' : 'The neighbours (grammar as evidence)', state.analysisScore, analysisQuestions.length],
+      [r ? 'Архив невозможных людей (чтение)' : 'The Archive of Impossible People (reading)', state.longCaseScore, longCaseNodes.length],
+      [r ? 'Её воспоминание (смысл фраз)' : 'Her memory (meaning of phrases)', results.traceCorrect, memoryTraceQuestions.length]
     ];
     const report = document.createElement('div');
     report.className = 'ev-report';
@@ -219,10 +199,9 @@
     autoHideIrene();
     hookEngine();
     guardAnswers();
-    applyGender();
     addListenButtons();
     const engineGo = window.go;
-    window.go = id => { const r = engineGo(id); if (id === 'ending' && state.campaignNode === null && results.sent['10 ending']) renderReport(); return r; };
+    window.go = id => { const r = engineGo(id); if (id === 'ending' && state.caseClosed && results.sent['10 ending']) renderReport(); return r; };
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
   else start();

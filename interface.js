@@ -47,21 +47,21 @@
     const en = fullEnglish();
     const translation = document.getElementById('introTranslation');
     translation.hidden = en;
-    translation.textContent = 'Женщину нашли в квартире №17. Согласно архиву, она никогда не существовала. На её ладони было выжжено ваше имя.';
+    translation.textContent = 'Ночью городской Архив получил анонимное сообщение. В квартире №17 нашли мёртвую женщину. У неё нет документов, её отпечатков нет ни в одной базе, а соседи говорят, что квартира пустует уже несколько лет.';
     document.querySelector('.chronicle-step-title').textContent = en ? 'Read both pages of the case file' : 'Прочитайте две страницы дела';
-    document.querySelector('.chronicle-chapter-label').innerHTML = 'Case 17<br>The Vale Residence';
+    document.querySelector('.chronicle-chapter-label').innerHTML = 'Case 001<br>Apartment 17';
   }
 
   function renderJournal() {
     const chapters = [
       ['Квартира №17', state.found.length === 4],
-      ['Доска расследования', state.analysisStep >= analysisQuestions.length],
-      ['Комната за стеной', state.hiddenFound.length === 4],
-      ['Свидетельница', state.caretakerStep >= caretakerDialogue.length],
-      ['Архивные следы', state.longCaseDone],
-      ['Погружение в память', state.deepMemoryDone],
-      ['Допрос Сайласа', state.question >= dialogue.length],
-      ['Отчёт и судьба города', !!state.campaignNode || state.campaignHistory.length > 0]
+      ['Показания соседей', state.analysisStep >= analysisQuestions.length],
+      ['Контора смотрительницы', state.hiddenFound.length === 4],
+      ['Мара Холт', state.caretakerStep >= caretakerDialogue.length],
+      ['Архив невозможных людей', state.longCaseDone],
+      ['Её последнее воспоминание', state.deepMemoryDone],
+      ['Разговор с Сайласом', state.question >= dialogue.length],
+      ['Квартира, которой не было', !!state.caseClosed]
     ];
     const current = chapters.findIndex(c => !c[1]);
     const list = document.getElementById('journalChapters');

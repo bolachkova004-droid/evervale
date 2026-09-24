@@ -41,8 +41,8 @@
 | `visit` | человек открыл игру |
 | `case_started` | выбрал уровень и начал новое дело |
 | `hero_chosen` | выбрал героя |
-| `chapter: 1 crime scene` … `chapter: 9 verdict` | прошёл главу; `score/max/accuracy` — результат, `minutes` — время на главу |
-| `case_finished` | дошёл до концовки; `englishAccuracy` — общий процент верных ответов |
+| `chapter: 1 apartment 17` … `chapter: 9 verdict` | прошёл главу; `score/max/accuracy` — результат, `minutes` — время на главу |
+| `case_finished` | закрыл Дело 001; `englishAccuracy` — общий процент верных ответов |
 | `left the game` | закрыл вкладку; `screen` — экран, на котором ушёл |
 
 Удобно смотреть через **Данные → Создать фильтр** (например, только `case_finished`) или **Вставка → Сводная таблица** (игроки × главы).

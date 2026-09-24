@@ -369,13 +369,11 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitl
    Interim art from the existing set; replace with assets/scenes/*.webp later. */
 .long-case-visual{border:1px solid var(--tw-line)!important;border-radius:var(--tw-radius)!important;box-shadow:var(--tw-shadow)!important;background-color:#140f2e!important;background-size:cover!important;background-position:center 30%!important;background-repeat:no-repeat!important}
 .long-case-visual[data-seg="0"]{background-image:url('assets/evervale-2edc1df84e2c46fc.webp')!important}
-.long-case-visual[data-seg="1"]{background-image:url('assets/evervale-98e63f334bb7f69b.webp')!important}
-.long-case-visual[data-seg="2"]{background-image:url('assets/evervale-89b03f3d91da00b9.webp')!important}
-.long-case-visual[data-seg="3"]{background-image:url('assets/evervale-fd727415597c12e8.webp')!important}
-.long-case-visual[data-seg="4"]{background-image:url('assets/heroes/irene.webp')!important;background-position:center 18%!important}
-.long-case-visual[data-seg="5"]{background-image:url('assets/evervale-dec33b1d80043d07.webp')!important;background-position:center 15%!important}
-.long-case-visual[data-seg="6"]{background-image:url('assets/evervale-2edc1df84e2c46fc.webp')!important}
-.long-case-visual[data-seg="7"]{background-image:url('assets/evervale-89b03f3d91da00b9.webp')!important}
+.long-case-visual[data-seg="1"]{background-image:url('assets/heroes/silas.webp')!important;background-position:center 14%!important}
+.long-case-visual[data-seg="2"]{background-image:url('assets/evervale-e5d80840fdf5d6ef.webp')!important;background-position:center 20%!important}
+.long-case-visual[data-seg="3"]{background-image:url('assets/heroes/irene.webp')!important;background-position:center 18%!important}
+.long-case-visual[data-seg="4"]{background-image:url('assets/evervale-dec33b1d80043d07.webp')!important;background-position:center 15%!important}
+.long-case-visual[data-seg="5"]{background-image:url('assets/evervale-98e63f334bb7f69b.webp')!important}
 .long-case-visual:before{z-index:1;background:linear-gradient(0deg,rgba(12,8,30,.94),rgba(12,8,30,.35) 45%,transparent 70%)!important}
 .long-case-visual:after{z-index:1;opacity:.55}
 .long-case-symbol,.long-case-chapter{position:relative;z-index:2}
@@ -405,3 +403,14 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitl
 .long-case-visual .long-case-symbol{position:absolute!important;left:22px!important;top:18px!important;transform:none!important;font-size:44px!important;line-height:1!important}
 /* On phones Irene's hint drops in under the top bar, away from the answer buttons. */
 @media(max-width:760px){.irene{top:64px!important;bottom:auto!important;left:10px!important;right:10px!important;width:auto!important;max-height:40vh;overflow:auto}}
+
+/* ---------- Case 001: Irene's translation, the vanished apartment, Case 002 ---------- */
+.ev-irene-says{margin:10px 0 4px;padding:12px 16px;border-radius:12px;border:1px dashed rgba(169,139,255,.6);background:rgba(169,139,255,.10);font:italic 500 18px/1.4 var(--tw-display);color:var(--tw-ink)}
+.ev-irene-says small{display:block;margin-bottom:4px;font:500 11px/1 var(--chronicle-mono);letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--tw-violet)}
+.ev-next-case{display:grid;gap:10px;justify-items:center;margin:22px auto 6px;max-width:560px;text-align:center}
+.ev-next-lead{margin:0!important;font-size:15px!important;color:var(--tw-muted)!important}
+.ev-folder{display:grid;gap:4px;padding:16px 26px 18px;border-radius:6px 16px 16px 16px;background:linear-gradient(160deg,#d8c79a,#bfa56c);color:#2b2016;box-shadow:0 18px 40px rgba(0,0,0,.45);transform:rotate(-1.5deg)}
+.ev-folder small{font:600 12px/1 var(--chronicle-mono);letter-spacing:.2em;color:#6a4a22}
+.ev-folder b{font:700 22px/1.15 var(--tw-display)}
+.ev-handwriting{margin:0!important;font:italic 500 22px/1.35 var(--tw-display)!important;color:var(--tw-gold)!important;transform:rotate(-1deg)}
+.ev-next-ru{margin:0!important;font-size:14px!important;color:var(--tw-muted)!important}
