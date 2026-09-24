@@ -3,7 +3,7 @@
    switch that part off. Players stay anonymous: each browser gets a random
    player code such as P-7K2QF, and nothing else identifies the person. */
 const EVERVALE_ANALYTICS = {
-  ga4: '',   // Google Analytics 4 measurement ID, e.g. 'G-ABC123XYZ9'
+  ga4: 'G-PY2RV08K7P',   // Google Analytics 4 measurement ID
   sheet: 'https://script.google.com/macros/s/AKfycbzDo0D7oZ9QYgGEgpZRr5IBkfYsKkeKR-2LBthf-FlIQjHhpFGwTqK8j5Qix191vNsR/exec'  // Google Apps Script web app
 };
 
