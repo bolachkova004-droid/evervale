@@ -421,3 +421,11 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitl
 .roster-card[data-portrait="nell"]::before{background-image:url('assets/heroes/nell.webp')!important;background-size:cover!important;background-position:center 14%!important}
 .roster-card[data-portrait="rowan"]::before{background-image:url('assets/heroes/rowan.webp')!important;background-size:cover!important;background-position:center 12%!important}
 .roster-card[data-portrait="null"]::before{background-image:url('assets/heroes/null.webp')!important;background-size:cover!important;background-position:center 12%!important}
+
+/* ---------- Main cast portraits: Mara, Morwen, Oren, Kael, the Queen ---------- */
+.caretaker-portrait{background:url('assets/heroes/mara.webp') center 14%/cover no-repeat,#140f2e!important}
+.roster-card[data-portrait="mara"]::before{background-image:url('assets/heroes/mara.webp')!important;background-size:cover!important;background-position:center 14%!important}
+.codex-art.img-morwen,.appearance-art.img-morwen,.campaign-art.img-morwen,.img-morwen,.roster-card[data-portrait="morwen"]::before{background-image:url('assets/heroes/morwen.webp')!important;background-size:cover!important;background-position:center 14%!important}
+.codex-art.img-oren,.appearance-art.img-oren,.campaign-art.img-oren,.img-oren,.roster-card[data-portrait="oren"]::before{background-image:url('assets/heroes/oren.webp')!important;background-size:cover!important;background-position:center 12%!important}
+.codex-art.img-kael,.appearance-art.img-kael,.campaign-art.img-kael,.img-kael,.roster-card[data-portrait="kael"]::before{background-image:url('assets/heroes/kael.webp')!important;background-size:cover!important;background-position:center 12%!important}
+.codex-art.img-queen,.appearance-art.img-queen,.campaign-art.img-queen,.img-queen,.roster-card[data-portrait="queen"]::before{background-image:url('assets/heroes/queen.webp')!important;background-size:cover!important;background-position:center 12%!important}

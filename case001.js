@@ -595,8 +595,8 @@
   Object.assign(appearanceData.queen, {
     badge: 'A reflection',
     quote: '“You are looking for a dead woman. I am looking for the one who will remember me.”',
-    context: 'For one second the Archive mirror shows a crowned figure without a face. Then it shows only you.',
-    ru: '«Вы ищете мёртвую женщину. А я ищу ту, кто меня вспомнит». На одну секунду зеркало Архива показывает коронованную фигуру без лица. Потом — только вас.',
+    context: 'For one second the Archive mirror shows a crowned woman. Then it shows only you—and you already cannot remember her face.',
+    ru: '«Вы ищете мёртвую женщину. А я ищу ту, кто меня вспомнит». На одну секунду зеркало Архива показывает коронованную женщину. Потом — только вас. И вы уже не можете вспомнить её лицо.',
     vocab: ['crowned — коронованный', 'reflection — отражение', 'remember — вспомнить'],
     button: { A1: 'Написать отчёт', A2: 'Write the report', B1: 'Write the report' }
   });
