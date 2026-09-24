@@ -5,11 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Evervale — Женщина без лица</title>
 
-<meta name="description" content="Evervale: мистическое расследование на английском. Дело №17 — Женщина без лица.">
-<meta name="theme-color" content="#050911">
+<meta name="description" content="Evervale: мистическое расследование на английском. Дело 001 — Женщина без лица.">
+<meta name="theme-color" content="#2c2160">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="game.css">
 <link rel="stylesheet" href="chronicle.css">
 <link rel="stylesheet" href="interface.css">
+<link rel="stylesheet" href="twilight.css">
 </head>
 <body data-evervale-design="chronicle-restored">
 <div id="app">
@@ -28,7 +32,7 @@
   <div class="chronicle-shell">
     <div class="chronicle-title-block">
       <div class="chronicle-eyebrow chronicle-desktop-only">A city between the pages</div>
-      <div class="chronicle-eyebrow chronicle-mobile-only">Case 17 / The Vale Residence</div>
+      <div class="chronicle-eyebrow chronicle-mobile-only">Case 001 / Apartment 17</div>
       <h1>EVERVALE</h1>
       <div class="chronicle-subtitle chronicle-desktop-only">Город украденных сказаний</div>
       <div class="chronicle-subtitle chronicle-mobile-only">Женщина без лица</div>
@@ -45,7 +49,7 @@
     </nav>
   </div>
   <button class="chronicle-sound" data-music-toggle onclick="toggleMusic()" aria-label="Включить музыку" aria-pressed="false"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Music<small data-music-status>Start</small></span></button>
-  <footer class="chronicle-bottom"><div class="chronicle-bottom-group"><span>Case 17 · The Faceless Woman</span><span data-current-level>English A2</span></div><span class="chronicle-desktop-only">Original night score</span></footer>
+  <footer class="chronicle-bottom"><div class="chronicle-bottom-group"><span>Case 001 · The Faceless Woman</span><span data-current-level>English A2</span></div><span class="chronicle-desktop-only">Original night score</span></footer>
 </section>
 
 <section id="level" class="screen center">
@@ -107,7 +111,7 @@
         <span>The memory keeper</span>
       </div>
     </div>
-    <div class="chronicle-chapter-label">Case 17<br>The Vale Residence</div>
+    <div class="chronicle-chapter-label">Case 001<br>Apartment 17</div>
     <div class="chronicle-book-actions">
       <button class="btn secondary" onclick="toggleMusic()">♫ Music</button>
       <button class="btn secondary" onclick="go('start')">Menu</button>
@@ -174,7 +178,7 @@
 </section>
 
 <section id="analysisboard" class="screen">
-  <div class="topbar"><div class="brand">CASE 01 · EVIDENCE ANALYSIS</div><div class="stats"><span>Score <b id="analysisScore">0/4</b></span><span>Stability <b id="analysisStability">100</b></span></div><button class="icon-btn" id="musicBtnAnalysis" onclick="toggleMusic()">♫ Music</button></div>
+  <div class="topbar"><div class="brand">CASE 001 · THE NEIGHBOURS</div><div class="stats"><span>Score <b id="analysisScore">0/4</b></span><span>Stability <b id="analysisStability">100</b></span></div><button class="icon-btn" id="musicBtnAnalysis" onclick="toggleMusic()">♫ Music</button></div>
   <div class="case-stage-wrap">
     <div class="case-stage-top"><div><div class="kicker" id="analysisKicker">STAGE TWO</div><h2 id="analysisTitle">Build the Timeline</h2><p class="case-stage-sub" id="analysisIntro"></p></div><div class="case-step" id="analysisProgress">1 / 4</div></div>
     <div class="analysis-layout">
@@ -198,20 +202,20 @@
 </section>
 
 <section id="hiddenstudy" class="screen">
-  <div class="topbar"><div class="brand">CASE 01 · HIDDEN STUDY</div><div class="stats"><span><span id="hiddenEvidenceLabel">Hidden clues</span> <b id="hiddenEvidenceStat">0/4</b></span><span>Stability <b id="hiddenStability">100</b></span></div><button class="icon-btn" id="musicBtnStudy" onclick="toggleMusic()">♫ Music</button></div>
+  <div class="topbar"><div class="brand">CASE 001 · THE CARETAKER</div><div class="stats"><span><span id="hiddenEvidenceLabel">Hidden clues</span> <b id="hiddenEvidenceStat">0/4</b></span><span>Stability <b id="hiddenStability">100</b></span></div><button class="icon-btn" id="musicBtnStudy" onclick="toggleMusic()">♫ Music</button></div>
   <div class="case-stage-wrap"><div class="case-stage-top"><div><div class="kicker" id="studyKicker">STAGE THREE</div><h2 id="studyTitle">The Room Behind the Wall</h2><p class="case-stage-sub" id="studyIntro"></p></div><div class="case-step" id="studyProgress">Find four hidden clues</div></div>
-  <div class="grid"><div class="panel study-scene"><div class="scene-image hidden-study-image"></div><div class="study-overlay"></div><button id="sh1" class="study-hotspot" onclick="findHiddenEvidence(1)">I</button><button id="sh2" class="study-hotspot" onclick="findHiddenEvidence(2)">II</button><button id="sh3" class="study-hotspot" onclick="findHiddenEvidence(3)">III</button><button id="sh4" class="study-hotspot" onclick="findHiddenEvidence(4)">IV</button><div class="study-copy"><div class="kicker">APARTMENT 17 · SEALED ANNEX</div><p id="studyDescription"></p></div></div>
+  <div class="grid"><div class="panel study-scene"><div class="scene-image hidden-study-image"></div><div class="study-overlay"></div><button id="sh1" class="study-hotspot" onclick="findHiddenEvidence(1)">I</button><button id="sh2" class="study-hotspot" onclick="findHiddenEvidence(2)">II</button><button id="sh3" class="study-hotspot" onclick="findHiddenEvidence(3)">III</button><button id="sh4" class="study-hotspot" onclick="findHiddenEvidence(4)">IV</button><div class="study-copy"><div class="kicker" id="studySceneKicker">GROUND FLOOR · THE OFFICE</div><p id="studyDescription"></p></div></div>
   <aside class="panel study-side"><h3 id="studyMaterials">Recovered material</h3><p class="lead" id="studyLead"></p><div class="study-list" id="hiddenEvidenceList"></div><div id="studyHint" class="hint-box hidden"></div><div class="language-tools" id="studyTools"></div><div class="action-bottom"><button class="btn" id="caretakerBtn" disabled onclick="go('caretaker')">Question the caretaker</button></div></aside></div></div>
 </section>
 
 <section id="caretaker" class="screen">
-  <div class="topbar"><div class="brand">CASE 01 · SECOND WITNESS</div><div class="stats"><span>Witness trust <b id="caretakerTrustStat">0</b></span><span>Influence <b id="caretakerInfluence">0</b></span></div><button class="icon-btn" id="musicBtnCaretaker" onclick="toggleMusic()">♫ Music</button></div>
+  <div class="topbar"><div class="brand">CASE 001 · MARA HOLT</div><div class="stats"><span>Witness trust <b id="caretakerTrustStat">0</b></span><span>Influence <b id="caretakerInfluence">0</b></span></div><button class="icon-btn" id="musicBtnCaretaker" onclick="toggleMusic()">♫ Music</button></div>
   <div class="case-stage-wrap"><div class="case-stage-top"><div><div class="kicker" id="caretakerKicker">BUILDING RECORDS</div><h2 id="caretakerTitle">Mara Holt</h2></div><div class="case-step" id="caretakerProgress">Question 1 / 4</div></div>
   <div class="caretaker-layout"><div class="panel caretaker-portrait"><div class="caretaker-caption"><b>Mara Holt</b><span id="caretakerRole">Caretaker of the Upper District residence</span></div></div><div class="panel caretaker-copy"><div class="caretaker-context" id="caretakerContext"></div><div class="caretaker-quote" id="caretakerSpeech"></div><div id="caretakerTranslation" class="speech-translation hidden"></div><div id="caretakerVocab" class="vocab hidden"></div><div id="caretakerTools" class="language-tools"></div><div class="caretaker-choices" id="caretakerChoices"></div></div></div></div>
 </section>
 
 <section id="longcase" class="screen">
-  <div class="topbar"><div class="brand">CASE 01 · EXTENDED INVESTIGATION</div><div class="stats"><span>Progress <b id="longCaseTopProgress">1/40</b></span><span>Accuracy <b id="longCaseScore">0</b></span><span>Stability <b id="longCaseStability">100</b></span></div><button class="icon-btn" id="musicBtnLongCase" onclick="toggleMusic()">♫ Music</button></div>
+  <div class="topbar"><div class="brand">CASE 001 · THE ARCHIVE</div><div class="stats"><span>Progress <b id="longCaseTopProgress">1/40</b></span><span>Accuracy <b id="longCaseScore">0</b></span><span>Stability <b id="longCaseStability">100</b></span></div><button class="icon-btn" id="musicBtnLongCase" onclick="toggleMusic()">♫ Music</button></div>
   <div class="long-case-wrap">
     <div class="long-case-head"><div><div class="kicker" id="longCaseKicker">FORENSIC ANNEX</div><h2 id="longCaseHeading">The Investigation Widens</h2><div class="long-case-progress"><span id="longCaseBar" style="width:2.5%"></span></div></div><div class="long-case-meta"><div class="long-case-pill" id="longCaseEstimate">Estimated first case: 1 h 45–2 h 15</div><div class="long-case-pill" id="longCaseSegment">Section 1 / 8</div></div></div>
     <div class="long-case-grid">
@@ -223,7 +227,7 @@
 </section>
 
 <section id="memorytrace" class="screen">
-  <div class="topbar"><div class="brand">CASE 01 · DEEP MEMORY</div><div class="stats"><span>Fragment <b id="memoryTraceProgress">1/3</b></span><span>Stability <b id="memoryTraceStability">100</b></span></div><button class="icon-btn" id="musicBtnTrace" onclick="toggleMusic()">♫ Music</button></div>
+  <div class="topbar"><div class="brand">CASE 001 · HER MEMORY</div><div class="stats"><span>Fragment <b id="memoryTraceProgress">1/3</b></span><span>Stability <b id="memoryTraceStability">100</b></span></div><button class="icon-btn" id="musicBtnTrace" onclick="toggleMusic()">♫ Music</button></div>
   <div class="memory-trace-wrap"><div class="panel memory-trace-card"><div class="kicker" id="memoryTraceKicker">SECOND LAYER</div><h2 class="level-title" id="memoryTraceTitle" style="font-size:clamp(31px,4.5vw,54px);text-align:left"></h2><p class="context" id="memoryTraceContext"></p><div class="memory-fragment" id="memoryFragment"></div><div id="memoryTraceTranslation" class="hint-box hidden"></div><div id="memoryTraceTools" class="language-tools"></div><div class="memory-trace-options" id="memoryTraceOptions"></div></div></div>
 </section>
 
@@ -277,7 +281,7 @@
       <div class="btn-row"><button class="btn secondary" onclick="closeCodex()">Назад</button></div>
     </div>
     
-    <div class="codex-grid"><article class="codex-card"><div class="codex-art img-elara"></div><div class="codex-body"><h3>Elara Vane</h3><div class="codex-role">Main protagonist · Archivist investigator</div><p>Главная героиня одной из веток. Холодный ум, наблюдательность и смутные воспоминания о проекте «Вторая история».</p></div></article><article class="codex-card"><div class="codex-art img-arden"></div><div class="codex-body"><h3>Arden Vane</h3><div class="codex-role">Main protagonist · Archivist investigator</div><p>Мужская версия главного героя. Более жёсткий, решительный и уличный по энергетике архивист-следователь.</p></div></article><article class="codex-card"><div class="codex-art img-irene"></div><div class="codex-body"><h3>Irene Vale</h3><div class="codex-role">Mentor · Language curator</div><p>Наставница игрока. Подсказывает формулировки, объясняет оттенки английского и помогает держать линию допроса.</p></div></article><article class="codex-card"><div class="codex-art img-silas"></div><div class="codex-body"><h3>Silas Vane</h3><div class="codex-role">Witness · Former Royal Investigator</div><p>Ключевой свидетель и потенциальный союзник. Знает о герое больше, чем готов сказать в начале расследования.</p></div></article><article class="codex-card"><div class="codex-art img-morwen"></div><div class="codex-body"><h3>Lady Morwen</h3><div class="codex-role">Minister of Memory</div><p>Политическая сила Эвервейла. Контролирует архивы, официальную правду и границы дозволенной памяти.</p></div></article><article class="codex-card"><div class="codex-art img-oren"></div><div class="codex-body"><h3>Oren Thale</h3><div class="codex-role">Memory physician</div><p>Опасный лекарь памяти. Может лечить разум, извлекать воспоминания — и переписывать личность.</p></div></article><article class="codex-card"><div class="codex-art img-kael"></div><div class="codex-body"><h3>Kael Dusk</h3><div class="codex-role">Shadow hunter</div><p>Следопыт из тёмных окраин. Охотится на то, что прячется за пределами официальной истории города.</p></div></article><article class="codex-card"><div class="codex-art img-queen"></div><div class="codex-body"><h3>The Nameless Queen</h3><div class="codex-role">Hidden figure</div><p>Таинственный образ, связанный с запретной историей города. Скорее легенда — или кто-то, кого специально стёрли.</p></div></article></div>
+    <div class="codex-grid"><article class="codex-card"><div class="codex-art img-elara"></div><div class="codex-body"><h3>Elara Vane</h3><div class="codex-role">Main protagonist · Archivist investigator</div><p>Главная героиня одной из веток. Холодный ум, наблюдательность и странное чувство, что некоторые воспоминания — не её.</p></div></article><article class="codex-card"><div class="codex-art img-arden"></div><div class="codex-body"><h3>Arden Vane</h3><div class="codex-role">Main protagonist · Archivist investigator</div><p>Мужская версия главного героя. Более жёсткий, решительный и уличный по энергетике архивист-следователь.</p></div></article><article class="codex-card"><div class="codex-art img-irene"></div><div class="codex-body"><h3>Irene Vale</h3><div class="codex-role">Mentor · Language curator</div><p>Наставница игрока. Подсказывает формулировки, объясняет оттенки английского и помогает держать линию допроса.</p></div></article><article class="codex-card"><div class="codex-art img-silas"></div><div class="codex-body"><h3>Silas Vane</h3><div class="codex-role">Witness · Former Royal Investigator</div><p>Ключевой свидетель и потенциальный союзник. Знает о герое больше, чем готов сказать в начале расследования.</p></div></article><article class="codex-card"><div class="codex-art img-morwen"></div><div class="codex-body"><h3>Lady Morwen</h3><div class="codex-role">Minister of Memory</div><p>Политическая сила Эвервейла. Контролирует архивы, официальную правду и границы дозволенной памяти.</p></div></article><article class="codex-card"><div class="codex-art img-oren"></div><div class="codex-body"><h3>Oren Thale</h3><div class="codex-role">Memory physician</div><p>Опасный лекарь памяти. Может лечить разум, извлекать воспоминания — и переписывать личность.</p></div></article><article class="codex-card"><div class="codex-art img-kael"></div><div class="codex-body"><h3>Kael Dusk</h3><div class="codex-role">Shadow hunter</div><p>Следопыт из тёмных окраин. Охотится на то, что прячется за пределами официальной истории города.</p></div></article><article class="codex-card"><div class="codex-art img-queen"></div><div class="codex-body"><h3>The Nameless Queen</h3><div class="codex-role">Hidden figure</div><p>Таинственный образ, связанный с запретной историей города. Скорее легенда — или кто-то, кого специально стёрли.</p></div></article></div>
   </div>
 </section>
 
@@ -286,16 +290,16 @@
     <div>
       <div class="kicker">Expanded cast</div>
       <h2 class="level-title">Новые игровые персонажи</h2>
-      <p class="codex-note">Я расширила мир Эвервейла: теперь в кампании можно постепенно вводить больше героев, союзников, подозреваемых и фракционных лидеров. Они дают новые ветки, допросы и английские ситуации.</p>
+      <p class="codex-note">Я расширила мир Эвервейла: теперь от дела к делу можно постепенно вводить больше героев, союзников, подозреваемых и фракционных лидеров. Они дают новые ветки, допросы и английские ситуации.</p>
     </div>
-    <div class="v13-callout">Идея для прохождения: персонажи открываются не сразу. Часть появляется в первом деле, часть — после выбора линии Министерства, Сопротивления или Тайного Архива.</div>
+    <div class="v13-callout">Идея для прохождения: персонажи открываются не сразу. Часть появляется в первом деле, часть — в следующих делах.</div>
     <div class="roster-grid"><article class="roster-card"><span class="roster-role">Mentor</span><h3>Irene Vale</h3><p>Куратор языка и сознания. Помогает с английским, но скрывает, почему её память не совпадает с архивами.</p><ul><li>Language feedback</li><li>тон реплик</li><li>личная тайна</li></ul></article>
 <article class="roster-card"><span class="roster-role">Ally</span><h3>Silas Vane</h3><p>Бывший королевский следователь. Знает прошлую версию героя и может стать союзником или манипулятором.</p><ul><li>допросы</li><li>доверие</li><li>тайная линия</li></ul></article>
 <article class="roster-card"><span class="roster-role">Rival</span><h3>Lady Morwen</h3><p>Министр памяти. Её линия учит официальной, дипломатической и политической лексике.</p><ul><li>formal English</li><li>давление власти</li><li>сделки</li></ul></article>
 <article class="roster-card"><span class="roster-role">Physician</span><h3>Oren Thale</h3><p>Врач памяти. Его сцены — это медицинские отчёты, моральные выборы и опасные эксперименты.</p><ul><li>medical vocabulary</li><li>consent / ethics</li><li>ампулы памяти</li></ul></article>
 <article class="roster-card"><span class="roster-role">Hunter</span><h3>Kael Dusk</h3><p>Охотник на теней. Открывает более динамичную линию с городскими окраинами и следами существ.</p><ul><li>field missions</li><li>survival English</li><li>угрозы за стеной</li></ul></article>
 <article class="roster-card"><span class="roster-role">Mystery</span><h3>The Nameless Queen</h3><p>Фигура из зеркальной истории. Её речь сложнее, поэтичнее и идеально подходит для уровней B2–C1.</p><ul><li>symbolic language</li><li>advanced metaphors</li><li>главная тайна</li></ul></article>
-<article class="roster-card"><span class="roster-role">Witness</span><h3>Mara Holt</h3><p>Соседка из квартиры напротив. Кажется обычным свидетелем, но помнит день, которого не было.</p><ul><li>everyday English</li><li>эмоции</li><li>скрытая улика</li></ul></article>
+<article class="roster-card"><span class="roster-role">Witness</span><h3>Mara Holt</h3><p>Смотрительница дома. Единственная, кто помнит имя погибшей — пока снова не забывает.</p><ul><li>everyday English</li><li>эмоции</li><li>скрытая улика</li></ul></article>
 <article class="roster-card"><span class="roster-role">Courier</span><h3>Felix Marr</h3><p>Архивный курьер, который доставлял письма погибшей. Быстрые диалоги, сленг и уличные подсказки.</p><ul><li>short replies</li><li>city slang</li><li>погоня за письмом</li></ul></article>
 <article class="roster-card"><span class="roster-role">Archivist</span><h3>Vesper Reed</h3><p>Хранительница запрещённых реестров. Даёт доступ к старым документам и проверяет точность английских выводов.</p><ul><li>report writing</li><li>evidence logic</li><li>архивные печати</li></ul></article>
 <article class="roster-card"><span class="roster-role">Clockmaker</span><h3>Nell Ash</h3><p>Часовщица Нижнего города. Её линия связана со временем, повторяющимися днями и условными предложениями.</p><ul><li>conditionals</li><li>time phrases</li><li>сломанные часы</li></ul></article>
@@ -311,7 +315,7 @@
 
 <section id="longcaseplan" class="screen chronicle-journal">
   <div class="journal-wrap">
-    <div class="journal-heading"><div><div class="kicker">The case journal</div><h2>Дело №17</h2><p>Женщина без лица</p></div><button class="btn secondary" onclick="go('start')">Меню</button></div>
+    <div class="journal-heading"><div><div class="kicker">The case journal</div><h2>Дело 001</h2><p>Женщина без лица</p></div><button class="btn secondary" onclick="go('start')">Меню</button></div>
     <ol class="journal-chapters" id="journalChapters"></ol>
     <button class="btn" onclick="continueGame()">Продолжить расследование →</button>
   </div>
@@ -326,5 +330,10 @@
 
 <!-- EVERVALE_BUILD: chronicle-github -->
 <script src="game.js"></script>
+<script src="case001.js"></script>
 <script src="interface.js"></script>
+<script src="story.js"></script>
+<script src="heroes3d.js"></script>
+<script src="ambience.js"></script>
+<script src="analytics.js"></script>
 </body></html>

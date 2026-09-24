@@ -1,0 +1,447 @@
+/* Twilight Evervale: a brighter, many-coloured dusk over the gothic city.
+   Loaded last, so it re-tones the earlier layers without rewriting them. */
+:root{
+  --tw-ink:#fff7ec;
+  --tw-text:#ece4f6;
+  --tw-muted:#cbbfe3;
+  --tw-gold:#ffd27d;
+  --tw-amber:#ffad5c;
+  --tw-rose:#ff7eb3;
+  --tw-violet:#a98bff;
+  --tw-teal:#5ee6d3;
+  --tw-sky:#7cc4ff;
+  --tw-night:#241b4d;
+  --tw-glass:linear-gradient(155deg,rgba(46,34,96,.80),rgba(24,26,66,.84) 55%,rgba(20,38,70,.84));
+  --tw-glass-strong:linear-gradient(155deg,rgba(44,32,94,.92),rgba(22,24,62,.94) 55%,rgba(18,36,66,.94));
+  --tw-line:rgba(255,215,160,.24);
+  --tw-line-soft:rgba(255,255,255,.16);
+  --tw-shadow:0 22px 50px rgba(6,3,20,.5);
+  --tw-radius:16px;
+  --tw-cta:linear-gradient(120deg,#e0772f,#d23f86 52%,#7446f0);
+  --chronicle-gold:#ffd27d;
+  --chronicle-gold-bright:#ffe2a6;
+  --gold:#ffd27d;--teal:#5ee6d3;--violet:#a98bff;--muted:#cbbfe3;--ink:#fff7ec;
+}
+
+/* ---------- Sky: aurora, stars and fireflies behind everything ---------- */
+html,body{background:#120e28!important;color:var(--tw-text)}
+#app{
+  background:
+    radial-gradient(ellipse 60% 45% at 12% 8%,rgba(255,126,179,.16),transparent 70%),
+    radial-gradient(ellipse 55% 40% at 88% 12%,rgba(94,230,211,.12),transparent 70%),
+    radial-gradient(ellipse 70% 50% at 70% 100%,rgba(255,173,92,.10),transparent 70%),
+    radial-gradient(ellipse 60% 50% at 0% 90%,rgba(124,196,255,.10),transparent 70%),
+    linear-gradient(160deg,#16112f 0%,#1e1440 34%,#101d3a 68%,#171433 100%)!important;
+}
+.ev-sky{position:absolute;inset:0;z-index:150;pointer-events:none;overflow:hidden;mix-blend-mode:screen}
+.ev-sky:before{
+  content:"";position:absolute;inset:-20%;opacity:.28;
+  background:
+    radial-gradient(ellipse 40% 22% at 30% 20%,rgba(169,139,255,.30),transparent 70%),
+    radial-gradient(ellipse 35% 20% at 70% 30%,rgba(94,230,211,.22),transparent 70%),
+    radial-gradient(ellipse 45% 25% at 50% 85%,rgba(255,126,179,.18),transparent 70%);
+  filter:blur(8px);animation:twAurora 26s ease-in-out infinite alternate;
+}
+.ev-sky i{
+  position:absolute;bottom:-12px;width:var(--s,4px);height:var(--s,4px);border-radius:50%;
+  background:radial-gradient(circle,#fff 0,var(--c,#ffd27d) 35%,transparent 70%);
+  box-shadow:0 0 10px 2px var(--c,#ffd27d);opacity:0;
+  animation:twFirefly var(--d,14s) linear var(--delay,0s) infinite;
+}
+@keyframes twAurora{0%{transform:translate3d(-4%,-2%,0) rotate(-3deg)}100%{transform:translate3d(4%,3%,0) rotate(3deg)}}
+@keyframes twFirefly{
+  0%{transform:translate3d(0,0,0);opacity:0}
+  10%{opacity:.9}
+  50%{transform:translate3d(var(--x,30px),-55vh,0);opacity:.75}
+  90%{opacity:.6}
+  100%{transform:translate3d(calc(var(--x,30px) * -1),-110vh,0);opacity:0}
+}
+
+/* ---------- Backgrounds with art: lighter, warmer overlays ---------- */
+.chronicle-home-bg{
+  background-image:
+    linear-gradient(90deg,rgba(10,6,28,.78),rgba(18,10,42,.40) 42%,rgba(8,14,34,.16) 68%,rgba(12,8,30,.56)),
+    linear-gradient(0deg,rgba(10,6,26,.78),transparent 40%),
+    var(--evervale-desktop-hero)!important;
+  filter:brightness(1.08) saturate(1.25) hue-rotate(-6deg);
+}
+.chronicle-home:after{
+  opacity:.9!important;
+  background:
+    radial-gradient(circle at 64% 16%,rgba(255,210,125,.20),transparent 26%),
+    radial-gradient(circle at 18% 78%,rgba(255,126,179,.12),transparent 30%),
+    radial-gradient(circle at 92% 70%,rgba(94,230,211,.10),transparent 30%)!important;
+}
+.chronicle-book-bg{
+  background-image:linear-gradient(180deg,rgba(14,8,34,.70),rgba(8,12,32,.86)),var(--evervale-desktop-hero)!important;
+  filter:saturate(1.2);
+}
+#level,#character,.chronicle-journal{
+  background:
+    linear-gradient(160deg,rgba(18,10,42,.86),rgba(10,16,40,.84) 55%,rgba(24,10,36,.86)),
+    var(--evervale-desktop-hero) center/cover fixed!important;
+}
+.hero-bg{
+  background-image:linear-gradient(90deg,rgba(10,6,28,.84),rgba(12,8,32,.46) 50%,rgba(8,14,34,.22)),linear-gradient(0deg,rgba(10,6,26,.8),transparent 45%),url('assets/evervale-fd727415597c12e8.webp')!important;
+  filter:saturate(1.2);opacity:1!important;
+}
+#start.chronicle-home,#intro.chronicle-book-screen{background:transparent!important}
+@media(max-width:760px){
+  .chronicle-title-block h1{font-size:clamp(52px,17vw,104px)!important}
+  .chronicle-home-bg{
+    background-image:linear-gradient(180deg,rgba(10,6,28,.50),rgba(10,6,28,.40) 30%,rgba(10,8,30,.80) 70%,rgba(8,6,24,.94)),var(--evervale-mobile-hero)!important;
+  }
+  .chronicle-book-bg{background-image:linear-gradient(180deg,rgba(14,8,34,.76),rgba(8,12,32,.90)),var(--evervale-mobile-hero)!important}
+}
+
+/* ---------- Type ---------- */
+h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1{color:var(--tw-ink)}
+.chronicle-title-block h1{
+  color:#fff8ec!important;
+  text-shadow:0 0 28px rgba(255,190,120,.55),0 0 60px rgba(255,126,179,.45),0 4px 18px rgba(40,16,80,.7);
+}
+.chronicle-title-block{text-shadow:none}
+.chronicle-subtitle{color:#ffe0b0!important;text-shadow:0 2px 18px rgba(60,20,90,.8)}
+.chronicle-quote{color:#f3ebff!important;text-shadow:0 2px 14px rgba(40,20,80,.9)}
+.chronicle-eyebrow,.kicker,.progress,.roster-role,.codex-role,.tag,.chronicle-chapter-label{color:var(--tw-gold)!important}
+.lead,.context,.codex-body p,.roster-card p,.roster-card ul,.appearance-context,.campaign-body,.study-list small,.evidence small,
+.character-intro,.level-card p,.protagonist-card p,.protagonist-note,.language-scale-panel,.level-intro,.scene-copy p,.study-copy p{color:var(--tw-text)!important}
+.codex-note,.codex-intro,#codex .lead,.chronicle-label small,.chronicle-index,.chronicle-bottom,.chronicle-fading,.chronicle-brand-copy span,.journal-chapters small,.stats span{color:var(--tw-muted)!important}
+.speech,.appearance-quote,.campaign-quote{color:var(--tw-ink)!important}
+.speech-translation,.choice .ru{color:#a9f5ea!important}
+
+/* ---------- Glass panels ---------- */
+.panel:not(.caretaker-portrait):not(.evidence-board):not(.scene):not(.study-scene):not(.character):not(.long-case-visual),
+.sidebar,.dialogue,.analysis-panel,.study-side,.caretaker-copy,.longcase-panel,.launch-panel,.roster-card,.codex-card,.ending,.memory,.start-card,.intro-shell .ending,.intro-art-panel,
+.level-card,.protagonist-card,.appearance-copy,.campaign-copy,.journal-wrap,.language-scale-panel{
+  background:var(--tw-glass)!important;
+  border:1px solid var(--tw-line)!important;
+  border-radius:var(--tw-radius)!important;
+  box-shadow:var(--tw-shadow),inset 0 1px 0 rgba(255,255,255,.14)!important;
+  backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+}
+.panel,.codex-card,.protagonist-card,.level-card,.roster-card,.appearance-card,.campaign-visual,.character,.caretaker-portrait{overflow:hidden}
+.scene,.study-scene,.character,.caretaker-portrait,.evidence-board,.appearance-card,.campaign-visual{border-radius:var(--tw-radius)!important;border-color:var(--tw-line)!important;box-shadow:var(--tw-shadow)!important}
+.scene,.study-scene,.character,.caretaker-portrait,.evidence-board,.campaign-art,.appearance-art,.codex-art,.protagonist-art{background-color:#140f2e!important}
+.appearance-card,.campaign-visual{background:var(--tw-glass)!important;border:1px solid var(--tw-line)!important;box-shadow:var(--tw-shadow)!important}
+.inline-profile,.player-meta,.hint-box,.speech-translation,.vocab,.study-clue,.evidence,.launch-card,.result,.memoryTrace-card{
+  background:rgba(255,255,255,.05)!important;border:1px solid var(--tw-line-soft)!important;border-radius:12px!important;
+}
+.hint-box,.speech-translation,.vocab{border-left:3px solid var(--tw-teal)!important}
+.topbar{
+  background:linear-gradient(90deg,rgba(40,24,86,.90),rgba(18,20,54,.90) 50%,rgba(16,34,62,.90))!important;
+  border:1px solid var(--tw-line)!important;border-radius:14px!important;
+  box-shadow:0 14px 34px rgba(20,10,60,.35)!important;backdrop-filter:blur(14px)!important;
+}
+.topbar .brand{color:var(--tw-gold)!important}
+.chronicle-masthead{background:linear-gradient(180deg,rgba(10,6,28,.72),rgba(10,6,28,0))!important;border-bottom-color:rgba(255,210,125,.28)!important}
+.chronicle-bottom{background:rgba(10,6,28,.72)!important;border-top-color:rgba(255,210,125,.24)!important}
+.chronicle-book-topbar,.chronicle-book-progress{background:rgba(16,10,40,.86)!important;border-bottom-color:rgba(255,210,125,.24)!important}
+.chronicle-step-dots i{background:rgba(255,255,255,.3)}.chronicle-step-dots i:first-child{background:var(--tw-gold)}
+.toast,.irene{background:var(--tw-glass-strong)!important;border:1px solid var(--tw-line)!important;border-radius:14px!important;box-shadow:0 18px 44px rgba(20,10,60,.45)!important}
+.irene .bubble{background:rgba(255,255,255,.08)!important}
+
+/* ---------- Buttons and choices ---------- */
+.btn,.icon-btn,.tool-btn{border-radius:999px!important;background:rgba(255,255,255,.10)!important;border:1px solid rgba(255,255,255,.28)!important;color:#fff!important}
+.btn:not(.secondary){background:var(--tw-cta)!important;border-color:rgba(255,220,170,.55)!important;box-shadow:0 10px 26px rgba(210,63,134,.35),inset 0 1px 0 rgba(255,255,255,.3)!important;text-shadow:0 1px 2px rgba(60,10,40,.45)}
+.btn:hover,.icon-btn:hover,.tool-btn:hover{transform:translateY(-2px)!important;filter:brightness(1.1);box-shadow:0 14px 30px rgba(169,139,255,.40)!important}
+.btn.secondary:hover,.icon-btn:hover{background:rgba(255,255,255,.18)!important}
+#intro .chronicle-page .btn{border-radius:999px!important;box-shadow:none!important;text-shadow:none}
+#intro .chronicle-page .btn:not(.secondary){background:linear-gradient(120deg,#f0b35a,#e27aa2)!important;color:#3a1830!important;border-color:#b06a4a!important}
+.choice,.campaign-choice,.analysis-option,.memory-trace-option,.verdict{
+  border-radius:14px!important;background:linear-gradient(120deg,rgba(255,255,255,.07),rgba(255,255,255,.025))!important;
+  border:1px solid rgba(255,255,255,.2)!important;border-left:4px solid var(--tw-choice,var(--tw-violet))!important;color:var(--tw-ink)!important;
+}
+.choice:nth-child(3n+1),.campaign-choice:nth-child(3n+1),.analysis-option:nth-child(3n+1),.verdict:nth-child(3n+1){--tw-choice:var(--tw-teal)}
+.choice:nth-child(3n+2),.campaign-choice:nth-child(3n+2),.analysis-option:nth-child(3n+2),.verdict:nth-child(3n+2){--tw-choice:var(--tw-rose)}
+.choice:nth-child(3n),.campaign-choice:nth-child(3n),.analysis-option:nth-child(3n),.verdict:nth-child(3n){--tw-choice:var(--tw-gold)}
+.choice:hover,.campaign-choice:hover,.analysis-option:hover,.memory-trace-option:hover,.verdict:hover{
+  background:linear-gradient(120deg,rgba(255,255,255,.12),rgba(169,139,255,.12))!important;
+  box-shadow:0 12px 28px rgba(20,10,60,.3),0 0 0 1px var(--tw-choice,var(--tw-violet))!important;transform:translateY(-2px)!important;
+}
+.choice small,.campaign-choice small{color:var(--tw-choice,var(--tw-gold))!important}
+.wordbank .word,.word{border-radius:999px!important;background:rgba(255,255,255,.12)!important;border:1px solid rgba(255,255,255,.26)!important;color:#fff!important}
+.vocab span{border-radius:999px;background:rgba(169,139,255,.2)!important;border-color:rgba(169,139,255,.5)!important;color:#f0e8ff!important}
+.level-badge{border-radius:999px!important;color:var(--tw-gold)!important;border-color:rgba(255,210,125,.55)!important;background:rgba(255,210,125,.1)}
+.lang-chip{border-radius:999px!important}
+
+/* ---------- Home menu ---------- */
+.chronicle-menu{background:var(--tw-glass-strong)!important;border:1px solid var(--tw-line)!important;border-radius:20px!important;box-shadow:0 30px 70px rgba(20,10,60,.45)!important;overflow:hidden}
+.chronicle-menu-row{border-bottom-color:rgba(255,255,255,.12)!important;border-radius:12px}
+.chronicle-menu-row .chronicle-label b{color:#fff}
+.chronicle-menu-row:hover,.chronicle-menu-row:focus-visible{background:linear-gradient(90deg,rgba(255,126,179,.30),rgba(169,139,255,.18))!important;box-shadow:inset 3px 0 var(--tw-gold)!important}
+.chronicle-menu-row.primary{background:linear-gradient(95deg,rgba(224,119,47,.55),rgba(210,63,134,.50) 55%,rgba(116,70,240,.45))!important;box-shadow:inset 3px 0 var(--tw-gold)!important}
+.chronicle-arrow{color:var(--tw-gold)!important}
+.chronicle-sound{background:var(--tw-glass-strong)!important;border-radius:999px!important;border-color:var(--tw-line)!important;color:#fff!important}
+.chronicle-sound[aria-pressed="true"] .sound-bars i{background:var(--tw-rose)!important}
+@media(max-width:760px){
+  .chronicle-menu{background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible}
+  .chronicle-menu-row{background:var(--tw-glass-strong)!important;border:1px solid var(--tw-line)!important;border-radius:16px!important}
+  .chronicle-menu-row.primary{background:linear-gradient(95deg,rgba(224,119,47,.88),rgba(210,63,134,.86) 55%,rgba(116,70,240,.84))!important;border-color:rgba(255,220,170,.7)!important}
+}
+
+/* ---------- The book: warm lantern light ---------- */
+.chronicle-book{filter:drop-shadow(0 30px 60px rgba(30,10,70,.5)) drop-shadow(0 0 60px rgba(255,200,120,.22))!important}
+.chronicle-page{background-color:#f1e3bd!important}
+
+/* ---------- Colour per English level ---------- */
+.level-card{--tw-hue:var(--tw-violet)}
+.level-card:nth-child(1){--tw-hue:#5ee6d3}.level-card:nth-child(2){--tw-hue:#8fe38a}.level-card:nth-child(3){--tw-hue:#ffd27d}
+.level-card:nth-child(4){--tw-hue:#ff9a6b}.level-card:nth-child(5){--tw-hue:#ff7eb3}.level-card:nth-child(6){--tw-hue:#a98bff}
+.level-card{border-top:3px solid var(--tw-hue)!important;background:linear-gradient(170deg,color-mix(in srgb,var(--tw-hue) 22%,transparent),transparent 55%),var(--tw-glass)!important}
+.level-card .level-badge{color:var(--tw-hue)!important;border-color:var(--tw-hue)!important;background:color-mix(in srgb,var(--tw-hue) 14%,transparent)}
+.level-card:hover,.level-card:focus-visible{box-shadow:0 22px 50px rgba(20,10,60,.4),0 0 0 1px var(--tw-hue),0 0 40px color-mix(in srgb,var(--tw-hue) 40%,transparent)!important;transform:translateY(-4px)!important}
+
+/* ---------- Heroes: aura colours ---------- */
+.protagonist-card.female,.codex-card:has(.img-elara){--tw-aura:#8c73ff}
+.protagonist-card.male,.codex-card:has(.img-arden){--tw-aura:#ff6b61}
+.codex-card:has(.img-irene){--tw-aura:#c77dff}.codex-card:has(.img-silas){--tw-aura:#ff8c4d}
+.codex-card:has(.img-morwen){--tw-aura:#ffcc6b}.codex-card:has(.img-oren){--tw-aura:#5affb8}
+.codex-card:has(.img-kael){--tw-aura:#73b8ff}.codex-card:has(.img-queen){--tw-aura:#9eeaff}
+.character{--tw-aura:#ff8c4d}.caretaker-portrait{--tw-aura:#ffb070}
+.protagonist-card,.codex-card{border-color:color-mix(in srgb,var(--tw-aura,#a98bff) 55%,transparent)!important}
+.protagonist-card:hover,.codex-card:hover,.protagonist-card.selected{
+  box-shadow:0 26px 60px rgba(20,10,60,.45),0 0 0 1px var(--tw-aura,#a98bff),0 0 50px color-mix(in srgb,var(--tw-aura,#a98bff) 45%,transparent)!important;
+}
+.codex-body h3,.protagonist-card h3{color:#fff!important}
+.codex-role{border-radius:10px;border-color:color-mix(in srgb,var(--tw-aura,#ffd27d) 60%,transparent)!important;color:color-mix(in srgb,var(--tw-aura,#ffd27d) 55%,#fff)!important}
+.codex-art:after,.protagonist-art:before,.campaign-art:before,.appearance-art:before{
+  background:linear-gradient(to top,rgba(12,8,30,.7),transparent 34%)!important;
+}
+.appearance-art:after,.campaign-art:after{border-radius:inherit}
+.caretaker-portrait:after{background:linear-gradient(to top,rgba(12,8,30,.88),transparent 45%)!important}
+.character-img:after{background:linear-gradient(0deg,rgba(12,8,30,.88),transparent 42%)!important}
+.caretaker-caption{background:linear-gradient(180deg,rgba(30,20,70,.5),rgba(14,10,36,.88))!important;border-radius:12px;border-color:var(--tw-line)!important}
+
+/* ---------- Living portraits (heroes3d.js) ---------- */
+.ev-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0;pointer-events:none;border-radius:inherit}
+.caretaker-caption,.caption{z-index:3!important}
+.ev-tilt{
+  transform:perspective(1100px) rotateX(var(--ev-rx,0deg)) rotateY(var(--ev-ry,0deg))!important;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease!important;
+  transform-style:preserve-3d;will-change:transform;
+}
+.ev-tilt[data-ev-hover]{transition:transform .08s linear,box-shadow .3s ease!important}
+.ev-glare{
+  position:absolute;inset:0;z-index:5;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .3s ease;
+  background:radial-gradient(circle at var(--ev-gx,50%) var(--ev-gy,30%),rgba(255,255,255,.28),rgba(255,220,180,.08) 30%,transparent 60%);
+  mix-blend-mode:soft-light;
+}
+.ev-tilt[data-ev-hover] .ev-glare{opacity:1}
+.ev-tilt:not(.irene) .ev-portrait{animation:twFloat 7s ease-in-out infinite}
+.ev-portrait.ev-live{animation:none}
+@keyframes twFloat{50%{translate:0 -4px}}
+.irene-photo{position:relative;overflow:hidden}
+.protagonist-mini,.chronicle-avatar{border:2px solid var(--tw-gold)!important;box-shadow:0 0 0 3px rgba(169,139,255,.35),0 0 18px rgba(255,126,179,.45)!important}
+
+/* ---------- Scenes: brighter, jewel-toned art ---------- */
+.scene-image,.hidden-study-image{filter:brightness(1.1) saturate(1.2)!important}
+.scene-image{background-image:linear-gradient(0deg,rgba(10,6,28,.85),transparent 42%),url('assets/evervale-98e63f334bb7f69b.webp')!important}
+.evidence-board{filter:saturate(1.1)}
+.hotspot,.study-hotspot{
+  background:radial-gradient(circle,rgba(255,210,125,.55),rgba(210,63,134,.45) 60%,rgba(116,70,240,.35))!important;
+  border:2px solid #fff3d6!important;color:#fff!important;box-shadow:0 0 18px rgba(255,210,125,.8)!important;
+  animation:twHotspot 2.2s ease-in-out infinite!important;
+}
+.hotspot.found,.study-hotspot.found{background:radial-gradient(circle,rgba(94,230,211,.7),rgba(40,120,140,.5))!important;border-color:#c8fff6!important;box-shadow:0 0 18px rgba(94,230,211,.8)!important;animation:none!important}
+@keyframes twHotspot{0%,100%{box-shadow:0 0 0 0 rgba(255,210,125,.7),0 0 18px rgba(255,210,125,.8)}50%{box-shadow:0 0 0 14px rgba(255,210,125,0),0 0 26px rgba(255,126,179,.9)}}
+.campaign-progress .step.active,.progress-step.active,.longcase-progress .step.active{border-color:var(--tw-gold)!important;box-shadow:0 0 16px rgba(255,210,125,.45)!important}
+.journal-chapters [aria-current="step"] b{color:var(--tw-gold)}
+.journal-chapters li{border-bottom-color:rgba(255,255,255,.14)!important}
+
+@media(prefers-reduced-motion:reduce){
+  .ev-sky:before,.ev-sky i,.ev-portrait,.hotspot,.study-hotspot{animation:none!important}
+  .ev-sky i{display:none}
+  .ev-tilt{transform:none!important}
+}
+
+/* ---------- New hero portraits (assets/heroes) ---------- */
+.protagonist-card.female .protagonist-art,.intro-portrait.female,.protagonist-mini.female,.codex-art.img-elara,.appearance-art.img-elara,.img-elara{
+  background-image:url('assets/heroes/elara.webp')!important;background-size:cover!important;background-position:center 18%!important;
+}
+.protagonist-card.male .protagonist-art,.intro-portrait.male,.protagonist-mini.male,.codex-art.img-arden,.appearance-art.img-arden,.img-arden{
+  background-image:url('assets/heroes/arden.webp')!important;background-size:cover!important;background-position:center 16%!important;
+}
+.codex-art.img-irene,.appearance-art.img-irene,.img-irene,.irene-photo,.roster-card[data-portrait="irene"]::before{
+  background-image:url('assets/heroes/irene.webp')!important;background-size:cover!important;background-position:center 18%!important;
+}
+.codex-art.img-silas,.appearance-art.img-silas,.img-silas,.character-img,.roster-card[data-portrait="silas"]::before{
+  background-image:url('assets/heroes/silas.webp')!important;background-size:cover!important;background-position:center 14%!important;
+}
+.protagonist-mini,.chronicle-avatar{background-position:center 16%!important}
+.protagonist-mini.female,.chronicle-avatar.female{background-position:46% 17%!important;background-size:260%!important}
+.protagonist-mini.male,.chronicle-avatar.male{background-position:55% 16%!important;background-size:260%!important}
+
+/* ---------- Fonts ---------- */
+:root{
+  --tw-display:"Cormorant Garamond","Cormorant",Georgia,serif;
+  --tw-body:"Lora",Georgia,serif;
+  --chronicle-serif:var(--tw-display);
+  --chronicle-mono:"IBM Plex Mono","Courier New",ui-monospace,monospace;
+}
+html,body{font-family:var(--tw-body)}
+h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitle,.chronicle-quote,.journal-heading h2,
+.speech,.appearance-quote,.campaign-quote,.caption b,.caretaker-caption b,.codex-body h3,.roster-card h3,.protagonist-card h3,.level-card h3,.irene-body b{
+  font-family:var(--tw-display)!important;
+}
+.titleline h2,.level-title,.codex-body h3,.protagonist-card h3,.level-card h3,.appearance-copy h2{font-weight:600!important;letter-spacing:.005em}
+.chronicle-title-block h1{font-weight:500!important;letter-spacing:.01em!important}
+.speech,.appearance-quote,.campaign-quote{font-style:italic;font-weight:500}
+.chronicle-label small,.chronicle-page p,.chronicle-book-note span,.chronicle-marginalia{font-family:var(--tw-body)!important}
+
+/* ---------- Screen transitions ---------- */
+.screen.active{animation:twScreenIn .55s cubic-bezier(.2,.7,.2,1) both}
+@keyframes twScreenIn{from{opacity:0;filter:blur(6px) brightness(1.4)}to{opacity:1;filter:none}}
+#intro.active .chronicle-book{animation:twBookOpen .9s cubic-bezier(.2,.8,.2,1) both;transform-origin:50% 50%}
+@keyframes twBookOpen{from{opacity:0;transform:perspective(1400px) rotateX(10deg) translateY(28px) scale(.96)}to{opacity:1;transform:none}}
+.screen.active .chapter,.screen.active .character-select-wrap,.screen.active .level-wrap,.screen.active .journal-wrap{animation:twRise .6s .08s cubic-bezier(.2,.7,.2,1) both}
+@keyframes twRise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.ev-flash{position:absolute;inset:0;z-index:190;pointer-events:none;background:radial-gradient(circle at 50% 45%,rgba(255,210,125,.22),rgba(169,139,255,.12) 40%,transparent 70%);animation:twFlash .7s ease-out forwards}
+@keyframes twFlash{from{opacity:1}to{opacity:0}}
+
+/* ---------- Music buttons show their state ---------- */
+[id^="musicBtn"].is-on{border-color:rgba(255,126,179,.7)!important;box-shadow:0 0 16px rgba(255,126,179,.35)!important}
+
+/* ---------- Phones ---------- */
+@media(max-width:760px){
+  /* One compact row: stats, music icon, menu. */
+  .topbar{display:flex!important;flex-wrap:nowrap!important;align-items:center!important;gap:8px!important;padding:8px 10px!important;min-height:0!important;flex-shrink:0!important}
+  .topbar .brand{display:none!important}
+  .topbar .stats{flex:1 1 auto;min-width:0;display:flex!important;flex-wrap:wrap;gap:2px 10px!important;font-size:12px!important;line-height:1.35}
+  .topbar .stats span{gap:4px!important}
+  .topbar .icon-btn{flex:0 0 auto;min-height:38px!important;padding:0 12px!important;font-size:11px!important;margin:0!important}
+  .topbar [id^="musicBtn"]{font-size:0!important;width:40px;min-width:40px!important;padding:0!important}
+  .topbar [id^="musicBtn"]::before{content:"♫";font-size:17px;line-height:1;opacity:.55}
+  .topbar [id^="musicBtn"].is-on::before{opacity:1;color:var(--tw-rose);text-shadow:0 0 10px rgba(255,126,179,.8)}
+
+  /* Scenes: art on top with the clues, the description below it. */
+  .scene,.study-scene{--art-h:min(118vw,520px);min-height:0!important;padding-top:var(--art-h)!important;display:block!important}
+  .scene .scene-image,.study-scene .scene-image,.study-scene .study-overlay{bottom:auto!important;height:var(--art-h)!important}
+  .scene-copy,.study-copy{position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;max-width:none!important;margin:0!important;border:0!important;border-top:1px solid var(--tw-line)!important;border-radius:0!important;background:rgba(12,8,30,.6)!important}
+  .scene .hotspot,.study-scene .study-hotspot{position:absolute!important}
+  #h1{top:calc(var(--art-h)*.22)!important}#h2{top:calc(var(--art-h)*.62)!important}
+  #h3{top:calc(var(--art-h)*.52)!important}#h4{top:calc(var(--art-h)*.32)!important}
+  #sh1{top:calc(var(--art-h)*.22)!important}#sh2{top:calc(var(--art-h)*.30)!important}
+  #sh3{top:calc(var(--art-h)*.58)!important}#sh4{top:calc(var(--art-h)*.66)!important}
+
+  /* Portraits in dialogue: a banner, so the lines are close at hand. */
+  .dialogue-layout .character{min-height:0!important;height:clamp(250px,72vw,340px)!important}
+  .dialogue-layout .character-img{min-height:0!important;background-position:center 12%!important}
+  .caretaker-portrait{min-height:0!important;height:clamp(280px,80vw,380px)!important;background-size:auto,cover!important;background-position:center,center 18%!important}
+  .dialogue,.caretaker-copy{min-height:0!important}
+  .case-stage-top{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:8px!important}
+  .case-stage-top>div:first-child{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .screen.active,#intro.active .chronicle-book,.screen.active .chapter,.screen.active .character-select-wrap,.screen.active .level-wrap,.screen.active .journal-wrap,.ev-flash{animation:none!important}
+}
+
+/* ---------- Listen buttons and the English report ---------- */
+.ev-listen{
+  display:inline-flex;width:max-content;max-width:100%;justify-self:start;align-self:flex-start;align-items:center;gap:6px;margin:4px 0 8px;padding:5px 12px;border-radius:999px;cursor:pointer;
+  font:500 12px/1 var(--chronicle-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--tw-teal);
+  background:rgba(94,230,211,.10);border:1px solid rgba(94,230,211,.42);transition:background .2s ease,transform .2s ease;
+}
+.ev-listen:hover{background:rgba(94,230,211,.2);transform:translateY(-1px)}
+.scene-copy .ev-listen,.study-copy .ev-listen{margin-top:0}
+.ev-report{display:grid;gap:10px;margin-top:18px;padding:16px 18px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid var(--tw-line);text-align:left;white-space:normal}
+.ev-report b{font:600 20px/1.2 var(--tw-display);color:var(--tw-gold)}
+.ev-report-row{display:grid;grid-template-columns:minmax(0,1fr) 120px 48px;align-items:center;gap:12px;font-size:14px;color:var(--tw-text)}
+.ev-report-row i{height:8px;border-radius:99px;background:linear-gradient(90deg,var(--tw-teal) var(--p),rgba(255,255,255,.12) var(--p))}
+.ev-report-row em{font-style:normal;text-align:right;color:var(--tw-ink)}
+.ev-report small{color:var(--tw-muted);font-size:13px}
+@media(max-width:560px){.ev-report-row{grid-template-columns:1fr 60px 40px;font-size:13px}}
+
+/* ---------- Top bar: full-bleed and solid, so nothing shows above or through it ---------- */
+.screen{--tw-pad:18px}
+@media(max-width:900px){.screen{--tw-pad:12px}}
+.screen>.topbar:first-child{
+  position:sticky!important;top:calc(var(--tw-pad) * -1)!important;
+  margin:calc(var(--tw-pad) * -1) calc(var(--tw-pad) * -1) 16px!important;
+  border-radius:0 0 16px 16px!important;border-top:0!important;
+  background:linear-gradient(90deg,#2a1a5c,#171a45 50%,#132a4c)!important;
+}
+
+/* ---------- Irene's hints sit over the art (left), not over the buttons ---------- */
+@media(min-width:761px){.irene{left:18px!important;right:auto!important}}
+
+/* ---------- Scene art for the forensic sections and the memory dive ----------
+   Interim art from the existing set; replace with assets/scenes/*.webp later. */
+.long-case-visual{border:1px solid var(--tw-line)!important;border-radius:var(--tw-radius)!important;box-shadow:var(--tw-shadow)!important;background-color:#140f2e!important;background-size:cover!important;background-position:center 30%!important;background-repeat:no-repeat!important}
+.long-case-visual[data-seg="0"]{background-image:url('assets/scenes/unwritten.webp')!important}
+.long-case-visual[data-seg="1"]{background-image:url('assets/heroes/silas.webp')!important;background-position:center 14%!important}
+.long-case-visual[data-seg="2"]{background-image:url('assets/scenes/queen-stories.webp')!important;background-position:70% center!important}
+.long-case-visual[data-seg="3"]{background-image:url('assets/scenes/your-file.webp')!important}
+.long-case-visual[data-seg="4"]{background-image:url('assets/scenes/oren-lab.webp')!important}
+.long-case-visual[data-seg="5"]{background-image:url('assets/scenes/mirror.webp')!important;background-position:40% center!important}
+.long-case-visual:before{z-index:1;background:linear-gradient(0deg,rgba(12,8,30,.94),rgba(12,8,30,.35) 45%,transparent 70%)!important}
+.long-case-visual:after{z-index:1;opacity:.55}
+.long-case-symbol,.long-case-chapter{position:relative;z-index:2}
+.long-case-symbol{text-shadow:0 0 24px rgba(255,210,125,.8),0 0 60px rgba(169,139,255,.6)}
+
+.memory-ring{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle,rgba(20,12,48,.15) 0,rgba(20,12,48,.55) 55%,rgba(20,12,48,.95) 70%),
+    url('assets/scenes/memory.webp') center/cover!important;
+  box-shadow:0 0 0 1px rgba(255,210,125,.5),0 0 60px rgba(169,139,255,.45),inset 0 0 80px rgba(94,230,211,.25)!important;
+  animation:twLens 9s ease-in-out infinite alternate;
+}
+.memory-ring:before{
+  content:"";position:absolute;inset:-2px;border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 0deg,transparent 0 70%,rgba(255,210,125,.55) 80%,transparent 90%);
+  -webkit-mask:radial-gradient(circle,transparent 66%,#000 67%);mask:radial-gradient(circle,transparent 66%,#000 67%);
+  animation:twSpin 12s linear infinite;
+}
+.memory-ring .rune{position:relative;z-index:1;color:var(--tw-gold)!important;text-shadow:0 0 18px rgba(255,210,125,.9)}
+@keyframes twLens{from{filter:saturate(1.1) brightness(.95)}to{filter:saturate(1.35) brightness(1.15) hue-rotate(-12deg)}}
+@keyframes twSpin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.memory-ring,.memory-ring:before{animation:none!important}}
+.long-case-visual .long-case-chapter{position:absolute!important;left:22px!important;right:22px!important;bottom:22px!important;top:auto!important;transform:none!important;text-align:left!important}
+.long-case-visual .long-case-chapter p{color:var(--tw-text)!important;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.long-case-visual .long-case-chapter b{text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.long-case-visual .long-case-symbol{position:absolute!important;left:22px!important;top:18px!important;transform:none!important;font-size:44px!important;line-height:1!important}
+/* On phones Irene's hint drops in under the top bar, away from the answer buttons. */
+@media(max-width:760px){.irene{top:64px!important;bottom:auto!important;left:10px!important;right:10px!important;width:auto!important;max-height:40vh;overflow:auto}}
+
+/* ---------- Case 001: Irene's translation, the vanished apartment, Case 002 ---------- */
+.ev-irene-says{margin:10px 0 4px;padding:12px 16px;border-radius:12px;border:1px dashed rgba(169,139,255,.6);background:rgba(169,139,255,.10);font:italic 500 18px/1.4 var(--tw-display);color:var(--tw-ink)}
+.ev-irene-says small{display:block;margin-bottom:4px;font:500 11px/1 var(--chronicle-mono);letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:var(--tw-violet)}
+.ev-next-case{display:grid;gap:10px;justify-items:center;margin:22px auto 6px;max-width:560px;text-align:center}
+.ev-next-lead{margin:0!important;font-size:15px!important;color:var(--tw-muted)!important}
+.ev-folder{display:grid;gap:4px;padding:16px 26px 18px;border-radius:6px 16px 16px 16px;background:linear-gradient(160deg,#d8c79a,#bfa56c);color:#2b2016;box-shadow:0 18px 40px rgba(0,0,0,.45);transform:rotate(-1.5deg)}
+.ev-folder small{font:600 12px/1 var(--chronicle-mono);letter-spacing:.2em;color:#6a4a22}
+.ev-folder b{font:700 22px/1.15 var(--tw-display)}
+.ev-handwriting{margin:0!important;font:italic 500 22px/1.35 var(--tw-display)!important;color:var(--tw-gold)!important;transform:rotate(-1deg)}
+.ev-next-ru{margin:0!important;font-size:14px!important;color:var(--tw-muted)!important}
+
+/* ---------- Secondary cast portraits (assets/heroes) ---------- */
+.roster-card[data-portrait="felix"]::before{background-image:url('assets/heroes/felix.webp')!important;background-size:cover!important;background-position:center 14%!important}
+.roster-card[data-portrait="vesper"]::before{background-image:url('assets/heroes/vesper.webp')!important;background-size:cover!important;background-position:center 16%!important}
+.roster-card[data-portrait="nell"]::before{background-image:url('assets/heroes/nell.webp')!important;background-size:cover!important;background-position:center 14%!important}
+.roster-card[data-portrait="rowan"]::before{background-image:url('assets/heroes/rowan.webp')!important;background-size:cover!important;background-position:center 12%!important}
+.roster-card[data-portrait="null"]::before{background-image:url('assets/heroes/null.webp')!important;background-size:cover!important;background-position:center 12%!important}
+
+/* ---------- Main cast portraits: Mara, Morwen, Oren, Kael, the Queen ---------- */
+.caretaker-portrait{background:url('assets/heroes/mara.webp') center 14%/cover no-repeat,#140f2e!important}
+.roster-card[data-portrait="mara"]::before{background-image:url('assets/heroes/mara.webp')!important;background-size:cover!important;background-position:center 14%!important}
+.codex-art.img-morwen,.appearance-art.img-morwen,.campaign-art.img-morwen,.img-morwen,.roster-card[data-portrait="morwen"]::before{background-image:url('assets/heroes/morwen.webp')!important;background-size:cover!important;background-position:center 14%!important}
+.codex-art.img-oren,.appearance-art.img-oren,.campaign-art.img-oren,.img-oren,.roster-card[data-portrait="oren"]::before{background-image:url('assets/heroes/oren.webp')!important;background-size:cover!important;background-position:center 12%!important}
+.codex-art.img-kael,.appearance-art.img-kael,.campaign-art.img-kael,.img-kael,.roster-card[data-portrait="kael"]::before{background-image:url('assets/heroes/kael.webp')!important;background-size:cover!important;background-position:center 12%!important}
+.codex-art.img-queen,.appearance-art.img-queen,.campaign-art.img-queen,.img-queen,.roster-card[data-portrait="queen"]::before{background-image:url('assets/heroes/queen.webp')!important;background-size:cover!important;background-position:center 12%!important}
+
+/* ---------- Case 001 scene art (assets/scenes) ---------- */
+#analysisboard .evidence-board{
+  background:url('assets/scenes/neighbours.webp') center/contain no-repeat,
+    linear-gradient(rgba(12,8,30,.78),rgba(12,8,30,.78)),url('assets/scenes/neighbours.webp') center/cover no-repeat,#140f2e!important;
+  filter:none!important;
+}
+#hiddenstudy .hidden-study-image{
+  background-image:linear-gradient(0deg,rgba(10,6,28,.7),transparent 40%),url('assets/scenes/office.webp')!important;
+  background-size:cover!important;background-position:30% center!important;filter:none!important;
+}
+#ending .hero-bg{
+  background-image:linear-gradient(0deg,rgba(10,6,28,.85),rgba(10,6,28,.45) 60%,rgba(10,6,28,.3)),url('assets/scenes/ending.webp')!important;
+  background-size:cover!important;background-position:center!important;filter:none!important;
+}
+@media(max-width:900px){#analysisboard .evidence-board{min-height:0!important;aspect-ratio:16/10;background-size:cover,auto,cover!important}}
