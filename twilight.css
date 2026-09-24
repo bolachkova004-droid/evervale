@@ -414,3 +414,10 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitl
 .ev-folder b{font:700 22px/1.15 var(--tw-display)}
 .ev-handwriting{margin:0!important;font:italic 500 22px/1.35 var(--tw-display)!important;color:var(--tw-gold)!important;transform:rotate(-1deg)}
 .ev-next-ru{margin:0!important;font-size:14px!important;color:var(--tw-muted)!important}
+
+/* ---------- Secondary cast portraits (assets/heroes) ---------- */
+.roster-card[data-portrait="felix"]::before{background-image:url('assets/heroes/felix.webp')!important;background-size:cover!important;background-position:center 14%!important}
+.roster-card[data-portrait="vesper"]::before{background-image:url('assets/heroes/vesper.webp')!important;background-size:cover!important;background-position:center 16%!important}
+.roster-card[data-portrait="nell"]::before{background-image:url('assets/heroes/nell.webp')!important;background-size:cover!important;background-position:center 14%!important}
+.roster-card[data-portrait="rowan"]::before{background-image:url('assets/heroes/rowan.webp')!important;background-size:cover!important;background-position:center 12%!important}
+.roster-card[data-portrait="null"]::before{background-image:url('assets/heroes/null.webp')!important;background-size:cover!important;background-position:center 12%!important}
