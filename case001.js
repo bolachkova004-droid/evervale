@@ -118,6 +118,9 @@
   const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
   wrapAfter('renderAnalysisBoard', () => {
     setText('analysisKicker', EN() || A2() ? 'ACT I · THE NEIGHBOURS' : 'АКТ I · СОСЕДИ');
+    // Beginners read the question in English; the Russian stays in the translation box below.
+    const q = analysisQuestions[state.analysisStep];
+    if (q && beginner()) { setText('analysisQuestion', q.q); setText('analysisContext', q.context); }
     setText('analysisTitle', EN() || A2() ? 'What the Neighbours Say' : 'Показания соседей');
     setText('analysisIntro', EN() || A2()
       ? 'The people around Apartment 17 do not agree about anything. Read carefully: one small word can change a whole testimony.'
@@ -395,6 +398,7 @@
     if (seg && A2()) {
       setText('longCaseKicker', seg.k); setText('longCaseHeading', seg.title);
       setText('longCaseChapter', seg.title); setText('longCaseChapterDesc', seg.desc);
+      setText('longCaseSegment', 'Section ' + (node.seg + 1) + ' / ' + longCaseSegments.length);
     }
     if (node && node.ireneSays) {
       const body = document.getElementById('longCaseBody');
