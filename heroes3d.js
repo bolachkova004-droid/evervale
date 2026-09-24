@@ -4,8 +4,8 @@
    catches light and gathers drifting motes in their own colour. Without
    WebGL the cards still tilt in 3D over the original CSS artwork. */
 (() => {
-  const ART = '.protagonist-art,.codex-art,.appearance-art,.campaign-art,.character-img,.intro-portrait,.caretaker-portrait,.irene-photo,.long-case-visual';
-  const CARD = '.protagonist-card,.codex-card,.appearance-card,.campaign-visual,.character,.caretaker-portrait,.long-case-visual';
+  const ART = '.protagonist-art,.codex-art,.appearance-art,.campaign-art,.character-img,.intro-portrait,.caretaker-portrait,.irene-photo';
+  const CARD = '.protagonist-card,.codex-card,.appearance-card,.campaign-visual,.character,.caretaker-portrait';
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
   // Each hero glows in their own colour (linear RGB 0..1).

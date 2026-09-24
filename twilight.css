@@ -290,7 +290,7 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitl
 .chronicle-label small,.chronicle-page p,.chronicle-book-note span,.chronicle-marginalia{font-family:var(--tw-body)!important}
 
 /* ---------- Screen transitions ---------- */
-.screen.active{animation:twScreenIn .55s cubic-bezier(.2,.7,.2,1) both}
+.screen.active{animation:twScreenIn .55s cubic-bezier(.2,.7,.2,1) backwards}
 @keyframes twScreenIn{from{opacity:0;filter:blur(6px) brightness(1.4)}to{opacity:1;filter:none}}
 #intro.active .chronicle-book{animation:twBookOpen .9s cubic-bezier(.2,.8,.2,1) both;transform-origin:50% 50%}
 @keyframes twBookOpen{from{opacity:0;transform:perspective(1400px) rotateX(10deg) translateY(28px) scale(.96)}to{opacity:1;transform:none}}
@@ -431,11 +431,7 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitl
 .codex-art.img-queen,.appearance-art.img-queen,.campaign-art.img-queen,.img-queen,.roster-card[data-portrait="queen"]::before{background-image:url('assets/heroes/queen.webp')!important;background-size:cover!important;background-position:center 12%!important}
 
 /* ---------- Case 001 scene art (assets/scenes) ---------- */
-#analysisboard .evidence-board{
-  background:url('assets/scenes/neighbours.webp') center/contain no-repeat,
-    linear-gradient(rgba(12,8,30,.78),rgba(12,8,30,.78)),url('assets/scenes/neighbours.webp') center/cover no-repeat,#140f2e!important;
-  filter:none!important;
-}
+
 #hiddenstudy .hidden-study-image{
   background-image:linear-gradient(0deg,rgba(10,6,28,.7),transparent 40%),url('assets/scenes/office.webp')!important;
   background-size:cover!important;background-position:30% center!important;filter:none!important;
@@ -444,4 +440,40 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitl
   background-image:linear-gradient(0deg,rgba(10,6,28,.85),rgba(10,6,28,.45) 60%,rgba(10,6,28,.3)),url('assets/scenes/ending.webp')!important;
   background-size:cover!important;background-position:center!important;filter:none!important;
 }
-@media(max-width:900px){#analysisboard .evidence-board{min-height:0!important;aspect-ratio:16/10;background-size:cover,auto,cover!important}}
+
+/* ---------- Clean-up pass ---------- */
+/* Animated, slightly scaled backgrounds must not make screens scroll sideways. */
+.screen{overflow-x:hidden!important}
+
+/* Wide 16:9 scene art is shown whole: the picture sits on top of its panel at its
+   own proportions, and anything else in the panel (the chapter caption) goes below. */
+#analysisboard .evidence-board,
+.long-case-visual{
+  min-height:0!important;height:auto!important;align-self:start!important;
+  background-size:100% auto!important;background-position:center top!important;background-repeat:no-repeat!important;
+  background-color:#140f2e!important;filter:none!important;
+}
+#analysisboard .evidence-board{background-image:url('assets/scenes/neighbours.webp')!important;aspect-ratio:16/9}
+.long-case-visual{padding:calc(56.25% + 14px) 20px 20px!important;display:block!important}
+.long-case-visual[data-seg="1"]{background-position:center 12%!important;background-size:cover!important;aspect-ratio:auto}
+.long-case-visual:before{display:none!important}
+.long-case-visual:after{display:none!important}
+.long-case-visual .long-case-chapter{position:static!important;left:auto!important;right:auto!important;bottom:auto!important}
+.long-case-visual .long-case-chapter b{font-size:24px!important}
+.long-case-visual .long-case-symbol{top:14px!important;left:16px!important;font-size:34px!important}
+@media(min-width:901px){
+  .analysis-layout,.long-case-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)!important;align-items:start!important}
+  #analysisboard .evidence-board,.long-case-visual{position:sticky!important;top:88px}
+}
+.memory{width:min(930px,100%)!important;box-sizing:border-box}
+/* Scaled, drifting backgrounds stay behind the viewport instead of widening the page. */
+.chronicle-home-bg,#ending .hero-bg{position:fixed!important}
+/* Phones: the case journal header wraps instead of squeezing the title,
+   and character art in story scenes leaves room for the text below it. */
+@media(max-width:760px){
+  .journal-heading{flex-wrap:wrap!important}
+  .journal-heading>div:first-child{flex:1 1 100%}
+  .journal-heading h2{font-size:34px!important}
+  .appearance-art{min-height:0!important;height:62vh!important;max-height:560px}
+}
+.long-case-visual[data-seg]:not([data-seg="1"]){background-position:center top!important;background-size:100% auto!important}

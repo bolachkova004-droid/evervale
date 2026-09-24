@@ -46,7 +46,8 @@ const EVERVALE_ANALYTICS = {
     }, extra || {});
     try {
       fetch(cfg.sheet, { method: 'POST', mode: 'no-cors', keepalive: true,
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) });
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) })
+        .catch(() => {}); // offline or blocked: the game carries on quietly
     } catch (e) {}
   }
 
