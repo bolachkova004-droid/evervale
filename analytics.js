@@ -11,6 +11,29 @@ const EVERVALE_ANALYTICS = {
   const cfg = EVERVALE_ANALYTICS;
   if (!cfg.ga4 && !cfg.sheet) return;
 
+  /* A short notice on the title screen, with a switch to opt out. */
+  const OPT_OUT = 'evervale-no-stats';
+  const optedOut = (() => { try { return localStorage.getItem(OPT_OUT) === '1'; } catch (e) { return false; } })();
+  function notice() {
+    const bar = document.querySelector('.chronicle-bottom .chronicle-bottom-group');
+    if (!bar || document.getElementById('statsNotice')) return;
+    const wrap = document.createElement('span');
+    wrap.id = 'statsNotice'; wrap.className = 'ev-stats-notice';
+    const text = document.createElement('span');
+    text.textContent = optedOut ? 'Статистика отключена' : 'Анонимная статистика прохождения, без имён';
+    const btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'ev-stats-toggle';
+    btn.textContent = optedOut ? 'Включить' : 'Отключить';
+    btn.addEventListener('click', () => {
+      try { optedOut ? localStorage.removeItem(OPT_OUT) : localStorage.setItem(OPT_OUT, '1'); } catch (e) {}
+      location.reload();
+    });
+    wrap.append(text, btn);
+    bar.append(wrap);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', notice); else notice();
+  if (optedOut) return;
+
   const store = (key, make) => {
     try { let v = localStorage.getItem(key); if (!v) { v = make(); localStorage.setItem(key, v); } return v; }
     catch (e) { return make(); }
@@ -30,7 +53,7 @@ const EVERVALE_ANALYTICS = {
     s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(cfg.ga4);
     document.head.append(s);
     gtag('js', new Date());
-    gtag('config', cfg.ga4, { send_page_view: false });
+    gtag('config', cfg.ga4, { send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false });
     gtag('set', 'user_properties', { player_id: player, device_kind: device });
   }
   const ga = (name, params) => { if (cfg.ga4) gtag('event', name, params); };
