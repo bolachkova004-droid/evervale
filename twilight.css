@@ -368,12 +368,12 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitl
 /* ---------- Scene art for the forensic sections and the memory dive ----------
    Interim art from the existing set; replace with assets/scenes/*.webp later. */
 .long-case-visual{border:1px solid var(--tw-line)!important;border-radius:var(--tw-radius)!important;box-shadow:var(--tw-shadow)!important;background-color:#140f2e!important;background-size:cover!important;background-position:center 30%!important;background-repeat:no-repeat!important}
-.long-case-visual[data-seg="0"]{background-image:url('assets/evervale-2edc1df84e2c46fc.webp')!important}
+.long-case-visual[data-seg="0"]{background-image:url('assets/scenes/unwritten.webp')!important}
 .long-case-visual[data-seg="1"]{background-image:url('assets/heroes/silas.webp')!important;background-position:center 14%!important}
-.long-case-visual[data-seg="2"]{background-image:url('assets/evervale-e5d80840fdf5d6ef.webp')!important;background-position:center 20%!important}
-.long-case-visual[data-seg="3"]{background-image:url('assets/heroes/irene.webp')!important;background-position:center 18%!important}
-.long-case-visual[data-seg="4"]{background-image:url('assets/evervale-dec33b1d80043d07.webp')!important;background-position:center 15%!important}
-.long-case-visual[data-seg="5"]{background-image:url('assets/evervale-98e63f334bb7f69b.webp')!important}
+.long-case-visual[data-seg="2"]{background-image:url('assets/scenes/queen-stories.webp')!important;background-position:70% center!important}
+.long-case-visual[data-seg="3"]{background-image:url('assets/scenes/your-file.webp')!important}
+.long-case-visual[data-seg="4"]{background-image:url('assets/scenes/oren-lab.webp')!important}
+.long-case-visual[data-seg="5"]{background-image:url('assets/scenes/mirror.webp')!important;background-position:40% center!important}
 .long-case-visual:before{z-index:1;background:linear-gradient(0deg,rgba(12,8,30,.94),rgba(12,8,30,.35) 45%,transparent 70%)!important}
 .long-case-visual:after{z-index:1;opacity:.55}
 .long-case-symbol,.long-case-chapter{position:relative;z-index:2}
@@ -383,7 +383,7 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitl
   position:relative;overflow:hidden;
   background:
     radial-gradient(circle,rgba(20,12,48,.15) 0,rgba(20,12,48,.55) 55%,rgba(20,12,48,.95) 70%),
-    url('assets/evervale-98e63f334bb7f69b.webp') center/cover!important;
+    url('assets/scenes/memory.webp') center/cover!important;
   box-shadow:0 0 0 1px rgba(255,210,125,.5),0 0 60px rgba(169,139,255,.45),inset 0 0 80px rgba(94,230,211,.25)!important;
   animation:twLens 9s ease-in-out infinite alternate;
 }
@@ -429,3 +429,19 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitl
 .codex-art.img-oren,.appearance-art.img-oren,.campaign-art.img-oren,.img-oren,.roster-card[data-portrait="oren"]::before{background-image:url('assets/heroes/oren.webp')!important;background-size:cover!important;background-position:center 12%!important}
 .codex-art.img-kael,.appearance-art.img-kael,.campaign-art.img-kael,.img-kael,.roster-card[data-portrait="kael"]::before{background-image:url('assets/heroes/kael.webp')!important;background-size:cover!important;background-position:center 12%!important}
 .codex-art.img-queen,.appearance-art.img-queen,.campaign-art.img-queen,.img-queen,.roster-card[data-portrait="queen"]::before{background-image:url('assets/heroes/queen.webp')!important;background-size:cover!important;background-position:center 12%!important}
+
+/* ---------- Case 001 scene art (assets/scenes) ---------- */
+#analysisboard .evidence-board{
+  background:url('assets/scenes/neighbours.webp') center/contain no-repeat,
+    linear-gradient(rgba(12,8,30,.78),rgba(12,8,30,.78)),url('assets/scenes/neighbours.webp') center/cover no-repeat,#140f2e!important;
+  filter:none!important;
+}
+#hiddenstudy .hidden-study-image{
+  background-image:linear-gradient(0deg,rgba(10,6,28,.7),transparent 40%),url('assets/scenes/office.webp')!important;
+  background-size:cover!important;background-position:30% center!important;filter:none!important;
+}
+#ending .hero-bg{
+  background-image:linear-gradient(0deg,rgba(10,6,28,.85),rgba(10,6,28,.45) 60%,rgba(10,6,28,.3)),url('assets/scenes/ending.webp')!important;
+  background-size:cover!important;background-position:center!important;filter:none!important;
+}
+@media(max-width:900px){#analysisboard .evidence-board{min-height:0!important;aspect-ratio:16/10;background-size:cover,auto,cover!important}}

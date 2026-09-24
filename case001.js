@@ -117,6 +117,7 @@
   };
   const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
   wrapAfter('renderAnalysisBoard', () => {
+    setText('analysisKicker', EN() || A2() ? 'ACT I · THE NEIGHBOURS' : 'АКТ I · СОСЕДИ');
     setText('analysisTitle', EN() || A2() ? 'What the Neighbours Say' : 'Показания соседей');
     setText('analysisIntro', EN() || A2()
       ? 'The people around Apartment 17 do not agree about anything. Read carefully: one small word can change a whole testimony.'
@@ -160,6 +161,7 @@
       : 'На доске висят ключи. У каждого крючка есть номер. У одного номера нет, зато есть лента.');
     setText('studyMaterials', en || a2 ? 'Office papers' : 'Бумаги конторы');
     setText('studyLead', en || a2 ? 'Find four things that show how Apartment 17 was removed from the building.' : 'Найдите четыре вещи, которые показывают, как квартиру №17 убрали из дома.');
+    setText('studySceneKicker', en || a2 ? 'GROUND FLOOR · THE OFFICE' : 'ПЕРВЫЙ ЭТАЖ · КОНТОРА');
     setText('studyProgress', en || a2 ? 'Find four clues' : 'Найдите четыре улики');
     setText('caretakerBtn', en || a2 ? 'Talk to Mara Holt' : 'Поговорить с Марой Холт');
     const hint = document.getElementById('studyHint');
