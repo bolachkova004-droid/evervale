@@ -363,7 +363,7 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitl
 }
 
 /* ---------- Irene's hints sit over the art (left), not over the buttons ---------- */
-@media(min-width:761px){.irene{left:18px!important;right:auto!important}}
+@media(min-width:901px){.irene{left:18px!important;right:auto!important}}
 
 /* ---------- Scene art for the forensic sections and the memory dive ----------
    Interim art from the existing set; replace with assets/scenes/*.webp later. */
@@ -402,7 +402,7 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitl
 .long-case-visual .long-case-chapter b{text-shadow:0 2px 12px rgba(0,0,0,.8)}
 .long-case-visual .long-case-symbol{position:absolute!important;left:22px!important;top:18px!important;transform:none!important;font-size:44px!important;line-height:1!important}
 /* On phones Irene's hint drops in under the top bar, away from the answer buttons. */
-@media(max-width:760px){.irene{top:64px!important;bottom:auto!important;left:10px!important;right:10px!important;width:auto!important;max-height:40vh;overflow:auto}}
+@media(max-width:900px){.irene{top:64px!important;bottom:auto!important;left:10px!important;right:10px!important;width:auto!important;max-width:620px;margin:0 auto;max-height:40vh;overflow:auto}}
 
 /* ---------- Case 001: Irene's translation, the vanished apartment, Case 002 ---------- */
 .ev-irene-says{margin:10px 0 4px;padding:12px 16px;border-radius:12px;border:1px dashed rgba(169,139,255,.6);background:rgba(169,139,255,.10);font:italic 500 18px/1.4 var(--tw-display);color:var(--tw-ink)}
@@ -477,3 +477,7 @@ h1,h2,h3,.level-title,.titleline h2,.chronicle-title-block h1,.chronicle-subtitl
   .appearance-art{min-height:0!important;height:62vh!important;max-height:560px}
 }
 .long-case-visual[data-seg]:not([data-seg="1"]){background-position:center top!important;background-size:100% auto!important}
+/* Analytics notice on the title screen */
+.ev-stats-notice{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ev-stats-toggle{padding:2px 10px;border-radius:999px;border:1px solid var(--tw-line);background:rgba(255,255,255,.06);color:var(--tw-gold);font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer}
+.ev-stats-toggle:hover{background:rgba(255,255,255,.14)}

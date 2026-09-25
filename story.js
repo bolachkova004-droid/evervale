@@ -190,7 +190,8 @@
       engineShow(text);
       clearTimeout(timer);
       const wait = Math.max(6000, String(text).length * 60);
-      const hide = () => { if (canHover.matches && box.matches(':hover')) timer = setTimeout(hide, 2000); else closeIrene(); };
+      const until = Date.now() + 20000; // never longer than 20 s, even under a resting mouse
+      const hide = () => { if (canHover.matches && box.matches(':hover') && Date.now() < until) timer = setTimeout(hide, 2000); else closeIrene(); };
       timer = setTimeout(hide, wait);
     };
   }
